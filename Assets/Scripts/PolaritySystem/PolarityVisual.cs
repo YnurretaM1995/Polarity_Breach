@@ -5,7 +5,7 @@ namespace PolarityBreach.PolaritySystem
     [RequireComponent(typeof(PolarityComponent))]
     public class PolarityVisual : MonoBehaviour
     {
-        [SerializeField] private Material _renderer;
+        [SerializeField] private MeshRenderer _renderer;
         [SerializeField] private Color _blackColor = new Color(0.12f, 0.12f, 0.16f);
         [SerializeField] private Color _whiteColor = new Color(0.95f, 0.95f, 0.98f);
 
@@ -19,7 +19,7 @@ namespace PolarityBreach.PolaritySystem
         private void GetComponents()
         {
             _polarity = GetComponent<PolarityComponent>();
-            if (_renderer == null) _renderer = GetComponentInChildren<Material>();
+            if (_renderer == null) _renderer = GetComponentInChildren<MeshRenderer>();
         }
 
         private void OnEnable()
@@ -36,7 +36,7 @@ namespace PolarityBreach.PolaritySystem
         private void Apply(Polarity polarity)
         {
             if (_renderer == null) return;
-            _renderer.color = polarity == Polarity.Black ? _blackColor : _whiteColor;
+            _renderer.material.color = polarity == Polarity.Black ? _blackColor : _whiteColor;
         }
     }
 }
