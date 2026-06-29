@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d22142fc3409e4439f2546ce6e349b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraControlScript
-  player: {fileID: 0}
+  player: {fileID: 1942997205}
   offsetX: 0
   offsetZ: -7
   offsetY: 25
