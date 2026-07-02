@@ -5,7 +5,7 @@ namespace PolarityBreach.PolaritySystem
     [RequireComponent(typeof(PolarityComponent))]
     public class PolarityVisual : MonoBehaviour
     {
-        [SerializeField] private MeshRenderer _renderer;
+        [SerializeField] private Renderer[] _renderers;
         [SerializeField] private Color _blackColor = new Color(0.12f, 0.12f, 0.16f);
         [SerializeField] private Color _whiteColor = new Color(0.95f, 0.95f, 0.98f);
 
@@ -19,13 +19,14 @@ namespace PolarityBreach.PolaritySystem
         private void GetComponents()
         {
             _polarity = GetComponent<PolarityComponent>();
-            if (_renderer == null) _renderer = GetComponentInChildren<MeshRenderer>();
+            if (_renderers == null || _renderers.Length == 0)
+                _renderers = GetComponentsInChildren<Renderer>();
         }
 
         private void OnEnable()
         {
             _polarity.OnPolarityChanged += Apply;
-            Apply(_polarity.CurrentPolarity); 
+            Apply(_polarity.CurrentPolarity);
         }
 
         private void OnDisable()
@@ -35,8 +36,24 @@ namespace PolarityBreach.PolaritySystem
 
         private void Apply(Polarity polarity)
         {
-            if (_renderer == null) return;
-            _renderer.material.color = polarity == Polarity.Black ? _blackColor : _whiteColor;
+            if (_renderers == null) return;
+            Color nuevo = polarity == Polarity.Black ? _blackColor : _whiteColor;
+
+            foreach (Renderer rend in _renderers)
+            {
+                if (rend == null) continue;
+
+                Material[] mats = rend.materials;
+                for (int i = 0; i < mats.Length; i++)
+                {
+                    Material m = mats[i];
+
+                    if (m.HasProperty("_TintColor")) m.SetColor("_TintColor", nuevo);
+                    if (m.HasProperty("_TintAmount")) m.SetFloat("_TintAmount", 0.7f);
+                    if (m.HasProperty("_BaseColor")) m.SetColor("_BaseColor", nuevo);
+                    if (m.HasProperty("_Color")) m.SetColor("_Color", nuevo);
+                }
+            }
         }
     }
 }
