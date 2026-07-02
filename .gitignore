@@ -106,3 +106,6 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 UserSettings
 .idea
+Assets/TestScene.unity
+Assets/TestScene.unity.meta
+ProjectSettings/SceneTemplateSettings.json
