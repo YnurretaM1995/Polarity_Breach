@@ -229,8 +229,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.TestShooter
   _projectilePrefab: {fileID: 2682234097654052982, guid: dc6798321246b0a48b4d6a6a62f2a5bf, type: 3}
-  _muzzle: {fileID: 0}
+  _chargedProjectilePrefab: {fileID: 2682234097654052982, guid: ba684edfc3d0deb429eb3e9fc40d2131, type: 3}
   _fireRate: 1
+  _chargeTime: 2
 --- !u!95 &134883091498771782
 Animator:
   serializedVersion: 7

@@ -84,9 +84,10 @@ namespace PolarityBreach.PolaritySystem
         {
             float holdTime = Time.time - _chargeStartTime;
 
-            if (holdTime >= _chargeTime)
+            if (holdTime >= _chargeTime && !_chargeReady)
             {
                 _chargeReady = true;
+                Debug.Log("Charge Shot READY!");
             }
         }
 
@@ -95,6 +96,10 @@ namespace PolarityBreach.PolaritySystem
             if (_isCharging && _chargeReady)
             {
                 ChargeShot();
+            }
+            else
+            {
+                Debug.Log("Charge Shot CANCELLED!");
             }
             
             _isCharging = false;
