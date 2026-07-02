@@ -56,12 +56,14 @@ namespace PolarityBreach.PolaritySystem
         private void OnEnable()
         {
             _switchAction.performed += OnSwitchPerformed;
+            PauseMenu.OnPauseChanged += HandlePause;
             _switchAction.Enable();
         }
 
         private void OnDisable()
         {
             _switchAction.performed -= OnSwitchPerformed;
+            PauseMenu.OnPauseChanged -= HandlePause;
             if (_ownsAction) _switchAction.Disable();
         }
 
@@ -78,6 +80,12 @@ namespace PolarityBreach.PolaritySystem
             _polarity.Toggle();
             _lastSwitchTime = Time.time;
             return true;
+        }
+        
+        private void HandlePause(bool paused)
+        {
+            if (paused) _switchAction.Disable();   
+            else _switchAction.Enable();
         }
     }
 } 

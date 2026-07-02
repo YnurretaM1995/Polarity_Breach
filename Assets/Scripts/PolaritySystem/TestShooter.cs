@@ -34,8 +34,16 @@ namespace PolarityBreach.PolaritySystem
             _fireAction.AddBinding("<Gamepad>/rightTrigger");
         }
 
-        private void OnEnable() => _fireAction.Enable();
-        private void OnDisable() => _fireAction.Disable();
+        private void OnEnable()
+        { 
+            _fireAction.Enable();
+            PauseMenu.OnPauseChanged += HandlePause;
+        }
+        private void OnDisable()
+        {
+            _fireAction.Disable();
+            PauseMenu.OnPauseChanged -= HandlePause;
+        }
         private void OnDestroy() => _fireAction.Dispose();
 
         private void Update()
@@ -58,6 +66,12 @@ namespace PolarityBreach.PolaritySystem
             }
             
             AutoFire();
+        }
+        
+        private void HandlePause(bool paused)
+        {
+            if (paused) _fireAction.Disable();
+            else _fireAction.Enable();
         }
 
         private void Shoot()
