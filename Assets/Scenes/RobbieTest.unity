@@ -167,8 +167,8 @@ MonoBehaviour:
   enemiesPerWave: 05000000080000000c000000
   timeBetweenSpawns: 0.3
   timeBetweenWaves: 3
-  spawnAreaRadius: 20
-  clusterRadius: 3
+  spawnAreaRadius: 25
+  clusterRadius: 6
 --- !u!4 &204082860
 Transform:
   m_ObjectHideFlags: 0

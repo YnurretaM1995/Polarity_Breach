@@ -11,6 +11,7 @@ public class EnemyWaveSpawner : MonoBehaviour
     [SerializeField] private int[] enemiesPerWave = { 5, 8, 12 };
     [SerializeField] private float timeBetweenSpawns = 0.3f;
     [SerializeField] private float timeBetweenWaves = 3f;
+    [SerializeField] private float enemySpawnHeight = 0.5f;
 
     [Header("Random Spawn Settings")]
     [SerializeField] private float spawnAreaRadius = 20f;
@@ -75,9 +76,7 @@ public class EnemyWaveSpawner : MonoBehaviour
         Vector2 randomCircle = Random.insideUnitCircle * radius;
 
         return new Vector3(
-            center.x + randomCircle.x,
-            center.y,
-            center.z + randomCircle.y
+            center.x + randomCircle.x, enemySpawnHeight, center.z + randomCircle.y
         );
     }
 
