@@ -13,10 +13,6 @@ GameObject:
   - component: {fileID: 1580022316970675728}
   - component: {fileID: 2784897855671516789}
   - component: {fileID: 6273986680115551526}
-  - component: {fileID: 5372675022149322234}
-  - component: {fileID: 4596542721985107266}
-  - component: {fileID: 8018913163335082769}
-  - component: {fileID: 3578683327633460737}
   m_Layer: 0
   m_Name: EnemyRange
   m_TagString: Untagged
@@ -142,84 +138,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &5372675022149322234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911981779572457133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22b092f21f336104ab3d5e3e45e5bfbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyPursuitAI
-  target: {fileID: 0}
-  detectionRadius: 12
-  loseTargetRadius: 16
-  requireLineOfSight: 1
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  moveSpeed: 3.5
-  acceleration: 12
-  stoppingDistance: 0
-  isRangedEnemy: 1
-  preferredDistance: 5
-  preferredDistanceBuffer: 0.75
-  idleUntilDetected: 1
---- !u!114 &4596542721985107266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911981779572457133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30006a96d00fa1644a6accce70cd6d01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  projectilePrefab: {fileID: 979850657213972872, guid: 6801a610742cb0b49a819b3920fee86e, type: 3}
-  firePoint: {fileID: 0}
-  fireRate: 1.5
-  projectileSpeed: 12
-  maxFireRange: 12
-  damage: 10
---- !u!114 &8018913163335082769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911981779572457133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38983362bcf83b3439cfe3c00803da4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyContactDamage
-  damage: 10
-  hitCooldown: 1
-  playerTag: Player
-  knockbackForce: 6
-  enemyPushback: 1.5
---- !u!114 &3578683327633460737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911981779572457133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f74d852c7b1ecd4ca524f5d22844c24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 30
-  healthBarFill: {fileID: 0}
-  healthBarRoot: {fileID: 0}
-  hideWhenFullHealth: 1
-  poolId: RangedEnemy
 --- !u!1 &5006503729078392416
 GameObject:
   m_ObjectHideFlags: 0
