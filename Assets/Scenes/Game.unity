@@ -341,7 +341,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 408716706685779620, guid: 5dfc918f722f9084095afdb58cce7ded, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: PlayerTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 408716706685779620, guid: 5dfc918f722f9084095afdb58cce7ded, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 408716706685779620, guid: 5dfc918f722f9084095afdb58cce7ded, type: 3}
       propertyPath: m_TagString
@@ -414,6 +418,7 @@ GameObject:
   - component: {fileID: 784123170}
   - component: {fileID: 784123169}
   - component: {fileID: 784123172}
+  - component: {fileID: 784123173}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -539,6 +544,26 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &784123173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784123168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d22142fc3409e4439f2546ce6e349b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraControlScript
+  player: {fileID: 0}
+  offsetX: 0
+  offsetZ: -7
+  offsetY: 25
+  smoothTime: 0
+  xRotation: 70
+  yRotation: 0
+  zRotation: 0
 --- !u!1001 &1533916970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -813,11 +838,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6102381678693926401, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: 'Player '
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.14406
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalPosition.y
