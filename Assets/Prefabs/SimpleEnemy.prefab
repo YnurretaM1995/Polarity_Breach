@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5101678439464942200}
   - component: {fileID: 3815200401056895797}
-  - component: {fileID: 6661009327944524558}
+  - component: {fileID: 3310832023956083894}
   - component: {fileID: 56691034624257644}
   - component: {fileID: 7807594812795827406}
   - component: {fileID: 8894059901629516427}
@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 646547140358730182}
   - component: {fileID: 6935941499969548306}
   - component: {fileID: 4029121830450783869}
+  - component: {fileID: 8068411007653010604}
   m_Layer: 0
   m_Name: SimpleEnemy
   m_TagString: Untagged
@@ -204,7 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   isDead: 0
---- !u!54 &6661009327944524558
+--- !u!54 &3310832023956083894
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
-  _polarity: 0
+  _polarity: 1
 --- !u!195 &7261394583491311685
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -463,3 +464,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyHealth
   maxHealth: 30
+--- !u!114 &8068411007653010604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5322043786933266265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a197fc1db9f74e845bd6acbc96df73ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
+  _renderers: []
+  _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
+  _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
