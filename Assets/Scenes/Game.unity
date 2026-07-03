@@ -450,30 +450,41 @@ MonoBehaviour:
       enemyCount: 3
       pattern: 1
       spacing: 3
+      polarity: 1
     - name: Group 2
       enemyCount: 3
       pattern: 1
       spacing: 3.5
+      polarity: 1
   - name: Wave 2
     groups:
     - name: Group 1
       enemyCount: 3
       pattern: 0
       spacing: 2
+      polarity: 0
     - name: Group 2
       enemyCount: 3
       pattern: 0
       spacing: 3
+      polarity: 0
     - name: Group 3
       enemyCount: 3
       pattern: 0
       spacing: 3
+      polarity: 0
   - name: Wave 3
     groups:
     - name: Group 1
-      enemyCount: 15
+      enemyCount: 7
       pattern: 0
       spacing: 6
+      polarity: 1
+    - name: Group 1
+      enemyCount: 7
+      pattern: 0
+      spacing: 6
+      polarity: 1
   timeBetweenSpawns: 0.3
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
@@ -709,7 +720,7 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &784123173
+--- !u!114 &784123174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -734,6 +745,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraControlScript
   player: {fileID: 1817478968}
+  offsetX: 0
+  offsetZ: -7
+  offsetY: 25
+  smoothTime: 0
+  xRotation: 70
+  yRotation: 0
+  zRotation: 0
   offsetX: -5
   offsetZ: 0
   offsetY: 3
