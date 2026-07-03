@@ -430,6 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
   projectilePrefab: {fileID: 979850657213972872, guid: ff8a6265275bbd2459cb490dccb31438, type: 3}
   firePoint: {fileID: 8612148308107307021}
+  projectilePool: {fileID: 0}
   fireRate: 1.5
   projectileSpeed: 12
   maxFireRange: 12
