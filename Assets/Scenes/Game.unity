@@ -734,13 +734,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraControlScript
   player: {fileID: 1817478968}
-  offsetX: -5
-  offsetZ: 0
-  offsetY: 3
-  smoothTime: 0.3
-  xRotation: 30
-  yRotation: 30
-  zRotation: 30
+  offsetX: 0
+  offsetZ: -7
+  offsetY: 25
+  smoothTime: 0
+  xRotation: 70
+  yRotation: 0
+  zRotation: 0
 --- !u!1 &914137544
 GameObject:
   m_ObjectHideFlags: 0
