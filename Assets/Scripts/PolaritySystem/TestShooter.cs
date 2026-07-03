@@ -1,3 +1,4 @@
+using PolarityBreach.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -78,7 +79,9 @@ namespace PolarityBreach.PolaritySystem
         {
             if (_projectilePrefab == null) return;
 
-            Vector3 dir = AimDirection();
+            Vector3 dir = transform.forward;
+            dir.y = 0f;
+            dir.Normalize();
             GameObject p = Instantiate(_projectilePrefab, _muzzle.position, Quaternion.LookRotation(dir));
 
             var bulletPolarity = p.GetComponent<PolarityComponent>();
