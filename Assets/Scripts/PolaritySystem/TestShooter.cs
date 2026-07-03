@@ -10,6 +10,7 @@ namespace PolarityBreach.PolaritySystem
     {
         [SerializeField] private GameObject _projectilePrefab;
         [SerializeField] private GameObject _chargedProjectilePrefab;
+        [SerializeField] private ProjectilePool _projectilePool;
         
         [Header("Shoot Settings")]
         [SerializeField] private float _fireRate = 0.15f;
@@ -82,9 +83,9 @@ namespace PolarityBreach.PolaritySystem
             Vector3 dir = transform.forward;
             dir.y = 0f;
             dir.Normalize();
-            GameObject p = Instantiate(_projectilePrefab, _muzzle.position, Quaternion.LookRotation(dir));
+            ShootProjectile projectile = _projectilePool.GetProjectile(_muzzle.position, Quaternion.LookRotation(dir);
 
-            var bulletPolarity = p.GetComponent<PolarityComponent>();
+            var bulletPolarity = projectile.GetComponent<PolarityComponent>();
             if (bulletPolarity != null) bulletPolarity.SetPolarity(_polarity.CurrentPolarity);
 
             _lastShotTime = Time.time;
