@@ -203,7 +203,7 @@ MonoBehaviour:
   firePoint: {fileID: 1584108558}
   fireRate: 1.5
   projectileSpeed: 12
-  maxFireRange: 12
+  maxFireRange: 200
   damage: 10
 --- !u!114 &34946499
 MonoBehaviour:
