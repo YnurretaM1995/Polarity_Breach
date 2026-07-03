@@ -1,76 +1,87 @@
+using PolarityBreach.PolaritySystem;
 using UnityEngine;
 
-[RequireComponent(typeof(EnemyPursuitAI))]
-public class EnemyShooter : MonoBehaviour
+namespace PolarityBreach.Enemy
 {
-    [Header("References")]
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Transform firePoint;
-
-    [Header("Firing")]
-    [SerializeField] private float fireRate = 1.5f;
-    [SerializeField] private float projectileSpeed = 12f;
-    [SerializeField] private float maxFireRange = 12f;
-    [SerializeField] private int damage = 10;
-
-    private EnemyPursuitAI pursuitAI;
-    private float fireCooldown;
-    private Collider[] ownColliders;
-
-    private void Awake()
+    [RequireComponent(typeof(EnemyPursuitAI))]
+    public class EnemyShooter : MonoBehaviour
     {
-        pursuitAI = GetComponent<EnemyPursuitAI>();
-        if (firePoint == null) firePoint = transform;
-        ownColliders = GetComponentsInChildren<Collider>();
-    }
+        [Header("References")]
+        [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private Transform firePoint;
 
-    private void Update()
-    {
-        if (fireCooldown > 0f)
-            fireCooldown -= Time.deltaTime;
+        [Header("Firing")]
+        [SerializeField] private float fireRate = 1.5f;
+        [SerializeField] private float projectileSpeed = 12f;
+        [SerializeField] private float maxFireRange = 12f;
+        [SerializeField] private int damage = 10;
 
-        if (!CanFire()) return;
+        private EnemyPursuitAI pursuitAI;
+        private float fireCooldown;
+        private Collider[] ownColliders;
+        private PolarityComponent _polarity;
 
-        if (fireCooldown <= 0f)
+        private void Awake()
         {
-            Fire();
-            fireCooldown = 1f / Mathf.Max(fireRate, 0.01f);
+            pursuitAI = GetComponent<EnemyPursuitAI>();
+            _polarity = GetComponent<PolarityComponent>();
+            if (firePoint == null) firePoint = transform;
+            ownColliders = GetComponentsInChildren<Collider>();
         }
-    }
 
-    private bool CanFire()
-    {
-        if (pursuitAI.Target == null) return false;
-        if (!pursuitAI.IsEngaged) return false;
-        if (!pursuitAI.CanSeeTarget) return false;
-
-        float dist = Vector3.Distance(transform.position, pursuitAI.Target.position);
-        return dist <= maxFireRange;
-    }
-
-    private void Fire()
-    {
-        if (projectilePrefab == null || pursuitAI.Target == null) return;
-
-        Vector3 targetPoint = pursuitAI.Target.position + Vector3.up * 0.5f;
-        Vector3 dir = (targetPoint - firePoint.position).normalized;
-
-        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.LookRotation(dir));
-
-        Collider projCollider = proj.GetComponent<Collider>();
-        if (projCollider != null)
+        private void Update()
         {
-            foreach (Collider ownCollider in ownColliders)
+            if (fireCooldown > 0f)
+                fireCooldown -= Time.deltaTime;
+
+            if (!CanFire()) return;
+
+            if (fireCooldown <= 0f)
             {
-                if (ownCollider != null)
-                    Physics.IgnoreCollision(projCollider, ownCollider);
+                Fire();
+                fireCooldown = 1f / Mathf.Max(fireRate, 0.01f);
             }
         }
 
-        Projectile projScript = proj.GetComponent<Projectile>();
-        if (projScript != null)
+        private bool CanFire()
         {
-            projScript.Launch(dir, projectileSpeed, damage);
+            if (pursuitAI.Target == null) return false;
+            if (!pursuitAI.IsEngaged) return false;
+            if (!pursuitAI.CanSeeTarget) return false;
+
+            float dist = Vector3.Distance(transform.position, pursuitAI.Target.position);
+            return dist <= maxFireRange;
+        }
+
+        private void Fire()
+        {
+            if (projectilePrefab == null || pursuitAI.Target == null) return;
+
+            Vector3 targetPoint = pursuitAI.Target.position + Vector3.up * 0.5f;
+            Vector3 dir = (targetPoint - firePoint.position).normalized;
+
+            GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.LookRotation(dir));
+            
+            var projPolarity = proj.GetComponent<PolarityComponent>();
+            if (projPolarity != null && _polarity != null)
+                projPolarity.SetPolarity(_polarity.CurrentPolarity);
+
+
+            Collider projCollider = proj.GetComponent<Collider>();
+            if (projCollider != null)
+            {
+                foreach (Collider ownCollider in ownColliders)
+                {
+                    if (ownCollider != null)
+                        Physics.IgnoreCollision(projCollider, ownCollider);
+                }
+            }
+
+            Projectile projScript = proj.GetComponent<Projectile>();
+            if (projScript != null)
+            {
+                projScript.Launch(dir, projectileSpeed, damage);
+            }
         }
     }
 }
