@@ -231,6 +231,34 @@ MonoBehaviour:
   preferredDistance: 5
   preferredDistanceBuffer: 0.75
   idleUntilDetected: 1
+--- !u!114 &34946505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34946496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
+  _polarity: 1
+--- !u!114 &34946506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34946496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a197fc1db9f74e845bd6acbc96df73ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
+  _renderers: []
+  _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
+  _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
 --- !u!1 &76270030
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +309,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 5f7df449fba25d943852e49f5fc131e1, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 69ced4bfd5c83ee4a8c136d8908e5410, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &76270032
 MeshCollider:
@@ -946,6 +974,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1911981779572457133, guid: a2fbd54058fddf348899b076ff96df92, type: 3}
       insertIndex: -1
       addedObject: {fileID: 34946497}
+    - targetCorrespondingSourceObject: {fileID: 1911981779572457133, guid: a2fbd54058fddf348899b076ff96df92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 34946506}
+    - targetCorrespondingSourceObject: {fileID: 1911981779572457133, guid: a2fbd54058fddf348899b076ff96df92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 34946505}
   m_SourcePrefab: {fileID: 100100000, guid: a2fbd54058fddf348899b076ff96df92, type: 3}
 --- !u!4 &1584108558 stripped
 Transform:
