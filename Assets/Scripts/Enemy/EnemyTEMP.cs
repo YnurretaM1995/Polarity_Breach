@@ -2,7 +2,7 @@ using UnityEngine;
 
 // TEMPORARY ENEMY CLASS
 
-public class Enemy : MonoBehaviour
+public partial class Enemy : MonoBehaviour
 {
     private EnemyWaveSpawner waveSpawner;
     [SerializeField] private bool isDead;
