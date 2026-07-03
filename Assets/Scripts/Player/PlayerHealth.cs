@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using PolarityBreach.PolaritySystem.Interfaces;
+using UnityEngine.AdaptivePerformance;
 
 namespace PolarityBreach.Player
 {
@@ -25,6 +26,7 @@ namespace PolarityBreach.Player
             if (IsDead) return;
 
             currentHealth -= amount;
+            Debug.Log($"Life: {currentHealth}");
 
             if (currentHealth <= 0f)
             {
