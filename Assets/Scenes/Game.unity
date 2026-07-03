@@ -482,32 +482,53 @@ MonoBehaviour:
       spacing: 3.5
       polarity: 1
   - groups:
-    - enemyCount: 3
+    - enemyCount: 4
+      pattern: 0
+      spacing: 6
+      polarity: 0
+    - enemyCount: 4
+      pattern: 0
+      spacing: 6
+      polarity: 0
+  - groups:
+    - enemyCount: 2
       pattern: 0
       spacing: 2
       polarity: 0
-    - enemyCount: 3
+    - enemyCount: 2
       pattern: 1
       spacing: 3
-      polarity: 0
-    - enemyCount: 3
+      polarity: 1
+    - enemyCount: 2
       pattern: 0
       spacing: 3
       polarity: 0
-  - groups:
-    - enemyCount: 4
+    - enemyCount: 2
       pattern: 0
-      spacing: 6
+      spacing: 3
       polarity: 1
-    - enemyCount: 4
+    - enemyCount: 2
       pattern: 0
-      spacing: 6
+      spacing: 3
       polarity: 0
-    - enemyCount: 4
+    - enemyCount: 2
+      pattern: 0
+      spacing: 3
+      polarity: 1
+    - enemyCount: 2
+      pattern: 0
+      spacing: 3
+      polarity: 0
+    - enemyCount: 2
+      pattern: 0
+      spacing: 3
+      polarity: 1
+  - groups:
+    - enemyCount: 50
       pattern: 0
       spacing: 6
       polarity: 1
-    - enemyCount: 4
+    - enemyCount: 50
       pattern: 0
       spacing: 6
       polarity: 0
