@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 301146245062417106}
   - component: {fileID: 5009779684883178607}
   - component: {fileID: 8340595292806237781}
+  - component: {fileID: -6071555057613033898}
   - component: {fileID: 933150920283731836}
   m_Layer: 0
   m_Name: NewSimpleEnemy
@@ -366,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
-  _polarity: 0
+  _polarity: 1
 --- !u!195 &7703330955804363026
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -450,6 +451,21 @@ MonoBehaviour:
   playerTag: Player
   knockbackForce: 6
   enemyPushback: 1.5
+--- !u!114 &-6071555057613033898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841559682555498600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a197fc1db9f74e845bd6acbc96df73ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
+  _renderers: []
+  _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
+  _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
 --- !u!114 &933150920283731836
 MonoBehaviour:
   m_ObjectHideFlags: 0
