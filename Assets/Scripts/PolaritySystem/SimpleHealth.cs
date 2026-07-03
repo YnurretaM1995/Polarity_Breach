@@ -30,7 +30,6 @@ namespace PolarityBreach.PolaritySystem
             if (_current <= 0f)
             {
                 OnDied?.Invoke();
-                gameObject.SetActive(false); 
             }
         }
     }

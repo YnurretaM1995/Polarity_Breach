@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using PolarityBreach.Enemy;
 using UnityEngine;
 
 public class EnemyPool : MonoBehaviour

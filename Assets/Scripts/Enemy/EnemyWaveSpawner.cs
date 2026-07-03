@@ -1,4 +1,5 @@
 using System.Collections;
+using PolarityBreach.Enemy;
 using UnityEngine;
 
 public class EnemyWaveSpawner : MonoBehaviour
