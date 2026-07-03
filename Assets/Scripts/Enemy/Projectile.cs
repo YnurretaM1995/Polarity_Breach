@@ -1,11 +1,10 @@
+using PolarityBreach.PolaritySystem.Interfaces;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float lifetime = 4f;
-    [SerializeField] private string playerTag = "Player";
-    [SerializeField] private LayerMask hitLayers = ~0;
 
     private Rigidbody rb;
     private float speed;
@@ -27,9 +26,10 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(playerTag))
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            Debug.Log($"Player hit for {damage} damage.");
+            damageable.TakeDamage(damage);
             Destroy(gameObject);
             return;
         }
