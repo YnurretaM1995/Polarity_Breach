@@ -17,7 +17,6 @@ namespace PolarityBreach.Enemy
     [System.Serializable]
     public class EnemySpawnGroup
     {
-        public string name = "Group";
         public int enemyCount = 5;
         public SpawnPattern pattern = SpawnPattern.RandomCluster;
         public float spacing = 2f;
@@ -27,7 +26,6 @@ namespace PolarityBreach.Enemy
     [System.Serializable]
     public class EnemyWave
     {
-        public string name = "Wave";
         public EnemySpawnGroup[] groups;
     }
 
