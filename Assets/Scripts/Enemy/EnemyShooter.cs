@@ -9,6 +9,7 @@ namespace PolarityBreach.Enemy
         [Header("References")]
         [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform firePoint;
+        [SerializeField] private EnemyProjectilePool projectilePool;
 
         [Header("Firing")]
         [SerializeField] private float fireRate = 1.5f;
@@ -27,6 +28,8 @@ namespace PolarityBreach.Enemy
             _polarity = GetComponent<PolarityComponent>();
             if (firePoint == null) firePoint = transform;
             ownColliders = GetComponentsInChildren<Collider>();
+            if (projectilePool == null)
+                projectilePool = FindObjectOfType<EnemyProjectilePool>();
         }
 
         private void Update()
@@ -55,12 +58,13 @@ namespace PolarityBreach.Enemy
 
         private void Fire()
         {
-            if (projectilePrefab == null || pursuitAI.Target == null) return;
+            if (projectilePool  == null || pursuitAI.Target == null) return;
 
             Vector3 targetPoint = pursuitAI.Target.position + Vector3.up * 0.5f;
             Vector3 dir = (targetPoint - firePoint.position).normalized;
 
-            GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.LookRotation(dir));
+            Projectile proj = projectilePool.GetProjectile(firePoint.position, Quaternion.LookRotation(dir));
+            if (proj == null) return;
             
             var projPolarity = proj.GetComponent<PolarityComponent>();
             if (projPolarity != null && _polarity != null)
@@ -77,11 +81,7 @@ namespace PolarityBreach.Enemy
                 }
             }
 
-            Projectile projScript = proj.GetComponent<Projectile>();
-            if (projScript != null)
-            {
-                projScript.Launch(dir, projectileSpeed, damage);
-            }
+            proj.Launch(dir, projectileSpeed, damage);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace PolarityBreach.Enemy
         private float speed;
         private float damage;
         private PolarityComponent _polarity;
+        private float _spawnTime;
 
         private void Awake()
         {
@@ -20,13 +21,23 @@ namespace PolarityBreach.Enemy
             _polarity = GetComponent<PolarityComponent>();
             rb.useGravity = false;
         }
+        
+        private void OnEnable()
+        {
+            _spawnTime = Time.time;
+        }
 
         public void Launch(Vector3 direction, float launchSpeed, float launchDamage)
         {
             speed = launchSpeed;
             damage = launchDamage;
             rb.linearVelocity = direction.normalized * speed;
-            Destroy(gameObject, lifetime);
+        }
+        
+        private void Update()
+        {
+            if (Time.time - _spawnTime >= lifetime)
+                Deactivate();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -38,7 +49,7 @@ namespace PolarityBreach.Enemy
             
             if (hit)
             {
-                Destroy(gameObject);
+                Deactivate();
                 return;
             }
             
@@ -50,8 +61,14 @@ namespace PolarityBreach.Enemy
         
             if (!other.isTrigger)
             {
-                Destroy(gameObject);
+                Deactivate();
             }
+        }
+        
+        private void Deactivate()
+        {
+            rb.linearVelocity = Vector3.zero;
+            gameObject.SetActive(false);
         }
     }
 }
