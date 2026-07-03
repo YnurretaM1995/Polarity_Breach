@@ -159,7 +159,7 @@ MonoBehaviour:
   _speed: 55
   _damage: 20
   _lifeTime: 2.5
-  _knockbackForce: 15
+  _knockbackForce: 20
   _disapearOnHit: 0
 --- !u!54 &4789453827344001996
 Rigidbody:
