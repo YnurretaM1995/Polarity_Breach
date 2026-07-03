@@ -156,9 +156,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1afc79b3c9eec4eaf71f6eb8ca88f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.TestProjectile
-  _speed: 20
+  _speed: 55
   _damage: 20
-  _lifeTime: 3
+  _lifeTime: 2.5
+  _knockbackForce: 15
   _disapearOnHit: 0
 --- !u!54 &4789453827344001996
 Rigidbody:

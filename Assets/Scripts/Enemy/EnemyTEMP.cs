@@ -1,31 +1,57 @@
 using UnityEngine;
+using PolarityBreach.PolaritySystem;
 
 // TEMPORARY ENEMY CLASS
 
-public partial class Enemy : MonoBehaviour
+namespace PolarityBreach.Enemy
 {
-    private EnemyWaveSpawner waveSpawner;
-    [SerializeField] private bool isDead;
-
-    public void Spawn(EnemyWaveSpawner spawner)
+    public class Enemy : MonoBehaviour
     {
-        waveSpawner = spawner;
-        isDead = false;
-    }
+        [SerializeField] private bool isDead;
+        private EnemyWaveSpawner waveSpawner;
+        private SimpleHealth _health;
 
-    [ContextMenu("Kill Enemy")]
-    public void Kill()
-    {
-        if (isDead)
+        void Awake()
         {
-            return;
+            _health = GetComponent<SimpleHealth>();
         }
 
-        isDead = true;
-
-        if (waveSpawner != null)
+        void OnEnable()
         {
-            waveSpawner.EnemyDied(this);
+            if (_health != null)
+            {
+                _health.OnDied += Kill;
+            }
+        }
+
+        void OnDisable()
+        {
+            if (_health != null)
+            {
+                _health.OnDied -= Kill;
+            }
+        }
+
+        public void Spawn(EnemyWaveSpawner spawner)
+        {
+            waveSpawner = spawner;
+            isDead = false;
+        }
+
+        [ContextMenu("Kill Enemy")]
+        public void Kill()
+        {
+            if (isDead)
+            {
+                return;
+            }
+
+            isDead = true;
+
+            if (waveSpawner != null)
+            {
+                waveSpawner.EnemyDied(this);
+            }
         }
     }
 }

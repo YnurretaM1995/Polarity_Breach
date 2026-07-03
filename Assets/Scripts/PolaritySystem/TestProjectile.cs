@@ -9,6 +9,7 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private float _speed = 12f;
         [SerializeField] private float _damage = 10f;
         [SerializeField] private float _lifeTime = 3f;
+        [SerializeField] private float _knockbackForce = 5f;
         [SerializeField] private bool _disapearOnHit = true;
 
         private PolarityComponent _polarity;
@@ -26,7 +27,24 @@ namespace PolarityBreach.PolaritySystem
         private void OnTriggerEnter(Collider other)
         {
             bool hit = DamageSystem.TryApplyDamage(_polarity, other.gameObject, _damage);
-            if (hit && _disapearOnHit) gameObject.SetActive(false); 
+            if (hit)
+            {
+                Rigidbody rb = other.GetComponent<Rigidbody>();
+
+                if (rb != null)
+                {
+                    Vector3 knockbackDirection = transform.forward;
+                    knockbackDirection.y = 0;
+                    knockbackDirection.Normalize();
+                    
+                    rb.AddForce(knockbackDirection * _knockbackForce, ForceMode.Impulse);
+                }
+
+                if (_disapearOnHit)
+                {
+                    gameObject.SetActive(false);
+                }
+            }
         }
     }
 }

@@ -1,89 +1,165 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemyWaveSpawner : MonoBehaviour
+namespace PolarityBreach.Enemy
 {
-    [Header("References")]
-    [SerializeField] private EnemyPool enemyPool;
-
-    [Header("Wave Settings")]
-    [SerializeField] private int[] enemiesPerWave = { 5, 8, 12 };
-    [SerializeField] private float timeBetweenSpawns = 0.3f;
-    [SerializeField] private float timeBetweenWaves = 3f;
-
-    [Header("Random Spawn Settings")]
-    [SerializeField] private float spawnAreaRadius = 20f;
-    [SerializeField] private float clusterRadius = 3f;
-
-    private int aliveEnemies;
-    private Vector3 waveCenter;
-
-    private void Start()
+    public enum SpawnPattern
     {
-        StartCoroutine(RunWaves());
+        RandomCluster,
+        LineShape,
+        VShape,
+        CircleShape,
+        zigzagShape
     }
 
-    private IEnumerator RunWaves()
+    [System.Serializable]
+    public class EnemySpawnGroup
     {
-        for (int waveIndex = 0; waveIndex < enemiesPerWave.Length; waveIndex++)
+        public string name = "Group";
+        public int enemyCount = 5;
+        public SpawnPattern pattern = SpawnPattern.RandomCluster;
+        public float spacing = 2f;
+    }
+
+    [System.Serializable]
+    public class EnemyWave
+    {
+        public string name = "Wave";
+        public EnemySpawnGroup[] groups;
+    }
+
+    public class EnemyWaveSpawner : MonoBehaviour
+    {
+        [Header("References")]
+        [SerializeField] private EnemyPool enemyPool;
+        [SerializeField] private Transform[] possibleSpawnPoints;
+
+        [Header("Wave Settings")]
+        [SerializeField] private EnemyWave[] waves;
+        [SerializeField] private float timeBetweenSpawns = 0.3f;
+        [SerializeField] private float timeBetweenWaves = 3f;
+        [SerializeField] private float enemySpawnHeight = 0.5f;
+
+        [Header("Random Cluster Settings")]
+        [SerializeField] private float clusterRadius = 3f;
+
+        private int aliveEnemies;
+
+        private void Start()
         {
-            Debug.Log("Starting wave " + (waveIndex + 1));
-
-            waveCenter = GetRandomPointAround(transform.position, spawnAreaRadius);
-
-            yield return StartCoroutine(SpawnWave(enemiesPerWave[waveIndex]));
-
-            yield return new WaitUntil(() => aliveEnemies <= 0);
-
-            Debug.Log("Wave " + (waveIndex + 1) + " completed");
-
-            yield return new WaitForSeconds(timeBetweenWaves);
+            StartCoroutine(RunWaves());
         }
 
-        Debug.Log("Room cleared!");
-    }
-
-    private IEnumerator SpawnWave(int enemyCount)
-    {
-        for (int i = 0; i < enemyCount; i++)
+        private IEnumerator RunWaves()
         {
-            SpawnEnemy();
+            for (int waveIndex = 0; waveIndex < waves.Length; waveIndex++)
+            {
+                Debug.Log("Starting wave " + (waveIndex + 1));
 
-            yield return new WaitForSeconds(timeBetweenSpawns);
-        }
-    }
+                yield return StartCoroutine(SpawnWave(waves[waveIndex]));
 
-    private void SpawnEnemy()
-    {
-        Vector3 spawnPosition = GetRandomPointAround(waveCenter, clusterRadius);
+                yield return new WaitUntil(() => aliveEnemies <= 0);
 
-        Enemy enemy = enemyPool.GetEnemy(spawnPosition);
+                Debug.Log("Wave " + (waveIndex + 1) + " completed");
 
-        if (enemy == null)
-        {
-            Debug.LogWarning("EnemyPool did not return an enemy.");
-            return;
+                yield return new WaitForSeconds(timeBetweenWaves);
+            }
+
+            Debug.Log("Room cleared!");
         }
 
-        aliveEnemies++;
-        enemy.Spawn(this);
-    }
+        private IEnumerator SpawnWave(EnemyWave wave)
+        {
+            for (int groupIndex = 0; groupIndex < wave.groups.Length; groupIndex++)
+            {
+                EnemySpawnGroup group = wave.groups[groupIndex];
+                Transform spawnPoint = GetRandomSpawnPoint();
 
-    private Vector3 GetRandomPointAround(Vector3 center, float radius)
-    {
-        Vector2 randomCircle = Random.insideUnitCircle * radius;
+                if (spawnPoint == null)
+                {
+                    Debug.LogWarning("No spawn points assigned.");
+                    yield break;
+                }
 
-        return new Vector3(
-            center.x + randomCircle.x,
-            center.y,
-            center.z + randomCircle.y
-        );
-    }
+                Vector3[] offsets = GetPatternOffsets(group.pattern, group.enemyCount, group.spacing);
 
-    public void EnemyDied(Enemy enemy)
-    {
-        aliveEnemies--;
+                for (int i = 0; i < offsets.Length; i++)
+                {
+                    Vector3 spawnPosition = spawnPoint.position + offsets[i];
+                    spawnPosition.y = enemySpawnHeight;
 
-        enemyPool.ReturnEnemy(enemy);
+                    SpawnEnemyAtPosition(spawnPosition);
+
+                    yield return new WaitForSeconds(timeBetweenSpawns);
+                }
+            }
+        }
+
+        private Transform GetRandomSpawnPoint()
+        {
+            if (possibleSpawnPoints == null || possibleSpawnPoints.Length == 0)
+                return null;
+            
+
+            int randomIndex = Random.Range(0, possibleSpawnPoints.Length);
+            return possibleSpawnPoints[randomIndex];
+        }
+
+        private void SpawnEnemyAtPosition(Vector3 spawnPosition)
+        {
+            Enemy enemy = enemyPool.GetEnemy(spawnPosition);
+
+            if (enemy == null)
+            {
+                Debug.LogWarning("EnemyPool did not return an enemy.");
+                return;
+            }
+
+            aliveEnemies++;
+            enemy.Spawn(this);
+        }
+
+        private Vector3[] GetPatternOffsets(SpawnPattern pattern, int enemyCount, float spacing)
+        {
+            if (pattern == SpawnPattern.LineShape)
+                return GetLineOffsets(enemyCount, spacing);
+
+            return GetRandomClusterOffsets(enemyCount);
+        }
+
+        private Vector3[] GetRandomClusterOffsets(int enemyCount)
+        {
+            Vector3[] offsets = new Vector3[enemyCount];
+
+            for (int i = 0; i < enemyCount; i++)
+            {
+                Vector2 randomCircle = Random.insideUnitCircle * clusterRadius;
+                offsets[i] = new Vector3(randomCircle.x, 0f, randomCircle.y);
+            }
+
+            return offsets;
+        }
+        
+        private Vector3[] GetLineOffsets(int enemyCount, float spacing)
+        {
+            Vector3[] offsets = new Vector3[enemyCount];
+
+            float startX = -(enemyCount - 1) * spacing * 0.5f;
+
+            for (int i = 0; i < enemyCount; i++)
+            {
+                float x = startX + i * spacing;
+                offsets[i] = new Vector3(x, 0f, 0f);
+            }
+
+            return offsets;
+        }
+
+        public void EnemyDied(Enemy enemy)
+        {
+            aliveEnemies--;
+
+            enemyPool.ReturnEnemy(enemy);
+        }
     }
 }
