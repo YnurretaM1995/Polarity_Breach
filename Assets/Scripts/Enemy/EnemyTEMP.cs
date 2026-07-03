@@ -1,3 +1,4 @@
+using PolarityBreach.PolaritySystem;
 using UnityEngine;
 
 namespace PolarityBreach.Enemy
