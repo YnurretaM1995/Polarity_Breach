@@ -28,11 +28,13 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         controls.Player.Enable();
+        PauseMenu.OnPauseChanged += HandlePause;
     }
 
     private void OnDisable()
     {
         controls.Player.Disable();
+        PauseMenu.OnPauseChanged -= HandlePause;
     }
 
     private void Start()
@@ -59,6 +61,12 @@ public class PlayerController : MonoBehaviour
         {
             ApplyMovementPhysics();
         }
+    }
+    
+    private void HandlePause(bool paused)
+    {
+        if (paused) controls.Player.Disable();
+        else controls.Player.Enable();
     }
 
     private void InitializeInputSystem()
