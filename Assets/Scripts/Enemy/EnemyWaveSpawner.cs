@@ -101,7 +101,7 @@ namespace PolarityBreach.Enemy
         {
             if (possibleSpawnPoints == null || possibleSpawnPoints.Length == 0)
                 return null;
-            
+
 
             int randomIndex = Random.Range(0, possibleSpawnPoints.Length);
             return possibleSpawnPoints[randomIndex];
@@ -146,7 +146,7 @@ namespace PolarityBreach.Enemy
 
             return offsets;
         }
-        
+
         private Vector3[] GetLineOffsets(int enemyCount, float spacing)
         {
             Vector3[] offsets = new Vector3[enemyCount];
