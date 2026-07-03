@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e37c9c420af70449dcdf8e6a22332e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyPool
-  enemyPrefab: {fileID: 3815200401056895797, guid: b33b08b090e9a1e468aba36dd392bc50, type: 3}
+  enemyPrefab: {fileID: 4338762041914972008, guid: 64955665ec7281748b0e11ea22c5f528, type: 3}
   poolSize: 50
 --- !u!4 &30625202
 Transform:
@@ -912,6 +912,10 @@ PrefabInstance:
     - target: {fileID: 1911981779572457133, guid: a2fbd54058fddf348899b076ff96df92, type: 3}
       propertyPath: m_Name
       value: EnemyRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 1911981779572457133, guid: a2fbd54058fddf348899b076ff96df92, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4653906668922632015, guid: a2fbd54058fddf348899b076ff96df92, type: 3}
       propertyPath: m_LocalPosition.x

@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Enemy")) return;
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
