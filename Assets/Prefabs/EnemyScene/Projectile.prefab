@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4815914874324707131}
   - component: {fileID: 6167985001995215397}
   - component: {fileID: 2604893335406132096}
-  - component: {fileID: 1558457850798441345}
+  - component: {fileID: 1984103307443568}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b9a435050b1809c408de429ff12f2200, type: 2}
+  - {fileID: 2100000, guid: bf35e7bbc788a8a45b468e6f7c41337c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -141,7 +141,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1558457850798441345
+--- !u!114 &1984103307443568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 979850657213972872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 189a7668f2ee40743950af8784fbdebe, type: 3}
+  m_Script: {fileID: 11500000, guid: ca74887a2ce54f943b433fe0e7cde8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   lifetime: 4
