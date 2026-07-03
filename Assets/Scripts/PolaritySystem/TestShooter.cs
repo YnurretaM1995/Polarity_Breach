@@ -18,7 +18,7 @@ namespace PolarityBreach.PolaritySystem
         private bool _isCharging;
         private bool _chargeReady;
         private float _chargeStartTime;
-        private Transform _muzzle;
+        [SerializeField] private Transform _muzzle;
         private PolarityComponent _polarity;
         private InputAction _fireAction;
         private float _lastShotTime = float.NegativeInfinity;
@@ -28,7 +28,8 @@ namespace PolarityBreach.PolaritySystem
         {
             _polarity = GetComponent<PolarityComponent>();
             _cam = Camera.main;
-            if (_muzzle == null) _muzzle = transform;
+            if (_muzzle == null) 
+                _muzzle = transform;
 
             _fireAction = new InputAction("Fire", InputActionType.Button);
             _fireAction.AddBinding("<Mouse>/leftButton");
@@ -74,22 +75,7 @@ namespace PolarityBreach.PolaritySystem
             if (paused) _fireAction.Disable();
             else _fireAction.Enable();
         }
-
-        private void Shoot()
-        {
-            if (_projectilePrefab == null) return;
-
-            Vector3 dir = transform.forward;
-            dir.y = 0f;
-            dir.Normalize();
-            GameObject p = Instantiate(_projectilePrefab, _muzzle.position, Quaternion.LookRotation(dir));
-
-            var bulletPolarity = p.GetComponent<PolarityComponent>();
-            if (bulletPolarity != null) bulletPolarity.SetPolarity(_polarity.CurrentPolarity);
-
-            _lastShotTime = Time.time;
-        }
-
+        
         private void StartCharging()
         {
             _isCharging = true;
@@ -122,42 +108,39 @@ namespace PolarityBreach.PolaritySystem
             _isCharging = false;
             _chargeReady = false;
         }
-
+        
+        private void Shoot()
+        {
+            FireProjectile(_projectilePrefab);
+        }
+        
         private void ChargeShot()
         {
-            if (_chargedProjectilePrefab == null) return;
-            
-            Vector3 dir = AimDirection();
-            GameObject p = Instantiate(_chargedProjectilePrefab, _muzzle.position, Quaternion.LookRotation(dir));
-            
-            var bulletPolarity = p.GetComponent<PolarityComponent>();
-            if(bulletPolarity != null) bulletPolarity.SetPolarity(_polarity.CurrentPolarity);
-            
-            _lastShotTime = Time.time;
+            FireProjectile(_chargedProjectilePrefab);
         }
 
+        private void FireProjectile(GameObject prefab)
+        {
+            if (prefab == null) return;
+
+            Vector3 dir = transform.forward;
+            dir.y = 0f;
+            dir.Normalize();
+
+            GameObject p = Instantiate(prefab, _muzzle.position, Quaternion.LookRotation(dir));
+
+            var bulletPolarity = p.GetComponent<PolarityComponent>();
+            if (bulletPolarity != null) bulletPolarity.SetPolarity(_polarity.CurrentPolarity);
+
+            _lastShotTime = Time.time;
+        }
+        
         private void AutoFire()
         {
             if (Time.time >= _lastShotTime + _fireRate)
             {
                 Shoot();
             }
-        }
-
-        private Vector3 AimDirection()
-        {
-            if (_cam == null || Mouse.current == null) return transform.forward;
-
-            Ray ray = _cam.ScreenPointToRay(Mouse.current.position.ReadValue());
-            Plane ground = new Plane(Vector3.up, _muzzle.position);
-            if (ground.Raycast(ray, out float dist))
-            {
-                Vector3 hit = ray.GetPoint(dist);
-                Vector3 dir = hit - _muzzle.position;
-                dir.y = 0f;
-                if (dir.sqrMagnitude > 0.001f) return dir.normalized;
-            }
-            return transform.forward;
         }
     }
 }
