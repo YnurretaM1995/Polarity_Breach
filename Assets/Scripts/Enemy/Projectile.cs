@@ -1,3 +1,4 @@
+using PolarityBreach.Player;
 using PolarityBreach.PolaritySystem;
 using PolarityBreach.PolaritySystem.Interfaces;
 using UnityEngine;
@@ -49,6 +50,7 @@ namespace PolarityBreach.Enemy
             
             if (hit)
             {
+                
                 Deactivate();
                 return;
             }
