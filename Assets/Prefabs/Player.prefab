@@ -98,6 +98,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5091979559097780274}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4047813359756881081}
   m_SourcePrefab: {fileID: 100100000, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
 --- !u!1 &6102381678693926401 stripped
 GameObject:
@@ -274,3 +277,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerAnimation
   animator: {fileID: 134883091498771782}
+--- !u!114 &-4047813359756881081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102381678693926401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3123ea626d7794846b27bbc54f621735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerHealth
+  maxHealth: 100
