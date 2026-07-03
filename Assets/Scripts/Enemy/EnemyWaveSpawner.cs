@@ -1,5 +1,7 @@
 using System.Collections;
+using PolarityBreach.PolaritySystem;
 using UnityEngine;
+using PolarityBreach.PolaritySystem;
 
 namespace PolarityBreach.Enemy
 {
@@ -15,16 +17,15 @@ namespace PolarityBreach.Enemy
     [System.Serializable]
     public class EnemySpawnGroup
     {
-        public string name = "Group";
         public int enemyCount = 5;
         public SpawnPattern pattern = SpawnPattern.RandomCluster;
         public float spacing = 2f;
+        public Polarity polarity = Polarity.White;
     }
 
     [System.Serializable]
     public class EnemyWave
     {
-        public string name = "Wave";
         public EnemySpawnGroup[] groups;
     }
 
@@ -88,7 +89,7 @@ namespace PolarityBreach.Enemy
                     Vector3 spawnPosition = spawnPoint.position + offsets[i];
                     spawnPosition.y = enemySpawnHeight;
 
-                    SpawnEnemyAtPosition(spawnPosition);
+                    SpawnEnemyAtPosition(spawnPosition, group.polarity);
 
                     yield return new WaitForSeconds(timeBetweenSpawns);
                 }
@@ -105,7 +106,7 @@ namespace PolarityBreach.Enemy
             return possibleSpawnPoints[randomIndex];
         }
 
-        private void SpawnEnemyAtPosition(Vector3 spawnPosition)
+        private void SpawnEnemyAtPosition(Vector3 spawnPosition, Polarity polarity)
         {
             Enemy enemy = enemyPool.GetEnemy(spawnPosition);
 
@@ -113,6 +114,13 @@ namespace PolarityBreach.Enemy
             {
                 Debug.LogWarning("EnemyPool did not return an enemy.");
                 return;
+            }
+            
+            PolarityComponent polarityComponent = enemy.GetComponent<PolarityComponent>();
+
+            if (polarityComponent != null)
+            {
+                polarityComponent.SetPolarity(polarity);
             }
 
             aliveEnemies++;

@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 6167985001995215397}
   - component: {fileID: 2604893335406132096}
   - component: {fileID: 1984103307443568}
+  - component: {fileID: -2874881251686744892}
+  - component: {fileID: 2097242017312479204}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -153,4 +155,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca74887a2ce54f943b433fe0e7cde8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  lifetime: 4
+  lifetime: 10
+--- !u!114 &-2874881251686744892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979850657213972872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
+  _polarity: 0
+--- !u!114 &2097242017312479204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 979850657213972872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a197fc1db9f74e845bd6acbc96df73ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
+  _renderers: []
+  _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
+  _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
