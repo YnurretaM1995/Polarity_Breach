@@ -29,6 +29,7 @@ namespace PolarityBreach.PolaritySystem
 
             if (_current <= 0f)
             {
+                _current = 0f;
                 OnDied?.Invoke();
             }
         }
