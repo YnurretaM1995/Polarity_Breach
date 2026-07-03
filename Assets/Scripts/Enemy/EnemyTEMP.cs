@@ -1,7 +1,4 @@
 using UnityEngine;
-using PolarityBreach.PolaritySystem;
-
-// TEMPORARY ENEMY CLASS
 
 namespace PolarityBreach.Enemy
 {
@@ -9,11 +6,11 @@ namespace PolarityBreach.Enemy
     {
         [SerializeField] private bool isDead;
         private EnemyWaveSpawner waveSpawner;
-        private SimpleHealth _health;
+        private EnemyHealth _health;
 
         void Awake()
         {
-            _health = GetComponent<SimpleHealth>();
+            _health = GetComponent<EnemyHealth>();
         }
 
         void OnEnable()

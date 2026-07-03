@@ -1,45 +1,37 @@
-using PolarityBreach.PolaritySystem.Interfaces;
+using System;
 using UnityEngine;
+using PolarityBreach.PolaritySystem.Interfaces;
 
-public partial class Enemy : MonoBehaviour, IDamageable
+namespace PolarityBreach.Enemy
 {
-    [SerializeField] private int maxHealth = 30;
-    private float currentHealth;
 
-    private EnemyPool pool;
-
-    private void Awake()
+    public class EnemyHealth : MonoBehaviour, IDamageable
     {
-        pool = GetComponentInParent<EnemyPool>();
-    }
+        [SerializeField] private float maxHealth = 30f;
+        private float currentHealth;
 
-    private void OnEnable()
-    {
-        currentHealth = maxHealth;
-    }
+        public event Action OnDied;
 
-    public void TakeDamage(float amount)
-    {
-        if (currentHealth <= 0) return;
+        public float CurrentHealth => currentHealth;
+        public float MaxHealth => maxHealth;
+        public bool IsDead => currentHealth <= 0f;
 
-        currentHealth -= amount;
-
-        if (currentHealth <= 0)
+        private void OnEnable()
         {
-            Die();
+            currentHealth = maxHealth;
         }
-    }
 
-    private void Die()
-    {
-        if (pool != null)
+        public void TakeDamage(float amount)
         {
-            pool.ReturnEnemy(this);
-        }
-        else
-        {
-            Debug.LogWarning($"[{name}] No EnemyPool found in parent hierarchy — destroying instead.", this);
-            Destroy(gameObject);
+            if (IsDead) return;
+
+            currentHealth -= amount;
+
+            if (currentHealth <= 0f)
+            {
+                currentHealth = 0f;
+                OnDied?.Invoke();
+            }
         }
     }
 }

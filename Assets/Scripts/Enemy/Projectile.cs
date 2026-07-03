@@ -1,5 +1,5 @@
-using PolarityBreach.PolaritySystem.Interfaces;
 using UnityEngine;
+using PolarityBreach.PolaritySystem.Interfaces;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour
@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody rb;
     private float speed;
-    private int damage;
+    private float damage;
 
     private void Awake()
     {
@@ -16,7 +16,7 @@ public class Projectile : MonoBehaviour
         rb.useGravity = false;
     }
 
-    public void Launch(Vector3 direction, float launchSpeed, int launchDamage)
+    public void Launch(Vector3 direction, float launchSpeed, float launchDamage)
     {
         speed = launchSpeed;
         damage = launchDamage;
@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        
         if (!other.isTrigger)
         {
             Destroy(gameObject);
