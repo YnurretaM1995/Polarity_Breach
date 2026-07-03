@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31589beb28ec2684fb61871b6bceccb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPursuitAI
-  target: {fileID: 0}
+  target: {fileID: 1817478970}
   detectionRadius: 12
   loseTargetRadius: 16
   requireLineOfSight: 1
@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 784123169}
   - component: {fileID: 784123172}
   - component: {fileID: 784123173}
+  - component: {fileID: 784123174}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -710,8 +711,18 @@ MonoBehaviour:
   m_Version: 2
 --- !u!114 &784123173
 MonoBehaviour:
---- !u!1 &914137544
-GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784123168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &784123174
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -722,14 +733,20 @@ GameObject:
   m_Script: {fileID: 11500000, guid: 3d22142fc3409e4439f2546ce6e349b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraControlScript
-  player: {fileID: 0}
-  offsetX: 0
-  offsetZ: -7
-  offsetY: 25
-  smoothTime: 0
-  xRotation: 70
-  yRotation: 0
-  zRotation: 0
+  player: {fileID: 1817478968}
+  offsetX: -5
+  offsetZ: 0
+  offsetY: 3
+  smoothTime: 0.3
+  xRotation: 30
+  yRotation: 30
+  zRotation: 30
+--- !u!1 &914137544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
   - component: {fileID: 914137545}
@@ -1257,6 +1274,11 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!4 &1817478970 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+  m_PrefabInstance: {fileID: 1817478967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1951798308
 GameObject:
   m_ObjectHideFlags: 0

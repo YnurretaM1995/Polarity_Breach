@@ -375,7 +375,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5322043786933266265}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b08170ee3510afe468ba9ed749bb6a7b, type: 3}
   m_Name: 
@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31589beb28ec2684fb61871b6bceccb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPursuitAI
-  target: {fileID: 0}
+  target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
   detectionRadius: 12
   loseTargetRadius: 16
   requireLineOfSight: 1
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c014be9b54c514c86ce622a14c2386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 979850657213972872, guid: ff8a6265275bbd2459cb490dccb31438, type: 3}
   firePoint: {fileID: 8612148308107307021}
   fireRate: 1.5
   projectileSpeed: 12
