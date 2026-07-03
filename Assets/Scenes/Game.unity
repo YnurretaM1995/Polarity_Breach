@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e37c9c420af70449dcdf8e6a22332e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyPool
-  enemyPrefab: {fileID: 3815200401056895797, guid: b33b08b090e9a1e468aba36dd392bc50, type: 3}
+  enemyPrefab: {fileID: 4338762041914972008, guid: 64955665ec7281748b0e11ea22c5f528, type: 3}
   poolSize: 50
 --- !u!4 &30625202
 Transform:
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 5f7df449fba25d943852e49f5fc131e1, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: ad08bb1d9a40c95439355e1f18fe3a8c, type: 2}
   m_BuildHeightMesh: 0
 --- !u!64 &76270032
 MeshCollider:
