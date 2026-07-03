@@ -472,37 +472,55 @@ MonoBehaviour:
   - {fileID: 100467197}
   - {fileID: 1104071382}
   waves:
-  - name: Wave 1
-    groups:
-    - name: Group 1
-      enemyCount: 3
+  - groups:
+    - enemyCount: 3
       pattern: 1
       spacing: 3
-    - name: Group 2
-      enemyCount: 3
+      polarity: 1
+    - enemyCount: 3
       pattern: 1
       spacing: 3.5
-  - name: Wave 2
-    groups:
-    - name: Group 1
-      enemyCount: 3
+      polarity: 1
+  - groups:
+    - enemyCount: 3
       pattern: 0
       spacing: 2
-    - name: Group 2
-      enemyCount: 3
+      polarity: 0
+    - enemyCount: 3
+      pattern: 1
+      spacing: 3
+      polarity: 0
+    - enemyCount: 3
       pattern: 0
       spacing: 3
-    - name: Group 3
-      enemyCount: 3
-      pattern: 0
-      spacing: 3
-  - name: Wave 3
-    groups:
-    - name: Group 1
-      enemyCount: 15
+      polarity: 0
+  - groups:
+    - enemyCount: 4
       pattern: 0
       spacing: 6
-  timeBetweenSpawns: 0.3
+      polarity: 1
+    - enemyCount: 4
+      pattern: 0
+      spacing: 6
+      polarity: 0
+    - enemyCount: 4
+      pattern: 0
+      spacing: 6
+      polarity: 1
+    - enemyCount: 4
+      pattern: 0
+      spacing: 6
+      polarity: 0
+  - groups:
+    - enemyCount: 50
+      pattern: 0
+      spacing: 6
+      polarity: 1
+    - enemyCount: 50
+      pattern: 0
+      spacing: 6
+      polarity: 0
+  timeBetweenSpawns: 0.1
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
   clusterRadius: 6
