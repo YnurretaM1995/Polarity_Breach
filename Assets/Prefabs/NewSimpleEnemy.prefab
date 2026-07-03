@@ -213,7 +213,7 @@ Rigidbody:
   m_GameObject: {fileID: 8841559682555498600}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 5
+  m_LinearDamping: 4
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -292,7 +292,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
