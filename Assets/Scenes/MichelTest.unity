@@ -181,7 +181,7 @@ MonoBehaviour:
   moveSpeed: 3.5
   acceleration: 12
   stoppingDistance: 0
-  isRangedEnemy: 0
+  isRangedEnemy: 1
   preferredDistance: 5
   preferredDistanceBuffer: 0.75
   idleUntilDetected: 1
