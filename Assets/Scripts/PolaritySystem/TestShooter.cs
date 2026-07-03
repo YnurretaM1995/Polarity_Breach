@@ -1,3 +1,4 @@
+using PolarityBreach.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -55,7 +56,9 @@ namespace PolarityBreach.PolaritySystem
         {
             if (_projectilePrefab == null) return;
 
-            Vector3 dir = AimDirection();
+            Vector3 dir = transform.forward;
+            dir.y = 0f;
+            dir.Normalize();
             GameObject p = Instantiate(_projectilePrefab, _muzzle.position, Quaternion.LookRotation(dir));
 
             var bulletPolarity = p.GetComponent<PolarityComponent>();
@@ -64,20 +67,5 @@ namespace PolarityBreach.PolaritySystem
             _lastShotTime = Time.time;
         }
 
-        private Vector3 AimDirection()
-        {
-            if (_cam == null || Mouse.current == null) return transform.forward;
-
-            Ray ray = _cam.ScreenPointToRay(Mouse.current.position.ReadValue());
-            Plane ground = new Plane(Vector3.up, _muzzle.position);
-            if (ground.Raycast(ray, out float dist))
-            {
-                Vector3 hit = ray.GetPoint(dist);
-                Vector3 dir = hit - _muzzle.position;
-                dir.y = 0f;
-                if (dir.sqrMagnitude > 0.001f) return dir.normalized;
-            }
-            return transform.forward;
-        }
     }
 }
