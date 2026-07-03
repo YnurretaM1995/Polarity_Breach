@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
   _renderers: []
-  _blackColor: {r: 0, g: 0, b: 0, a: 1}
-  _whiteColor: {r: 30.4, g: 30.4, b: 31.36, a: 1}
+  _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
+  _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
 --- !u!114 &6054802736122291981
 MonoBehaviour:
   m_ObjectHideFlags: 0

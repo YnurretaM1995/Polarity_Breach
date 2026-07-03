@@ -6,8 +6,8 @@ namespace PolarityBreach.PolaritySystem
     public class PolarityVisual : MonoBehaviour
     {
         [SerializeField] private Renderer[] _renderers;
-        [SerializeField, ColorUsage(true, true)] private Color _blackColor = new Color(0.12f, 0.12f, 0.16f);
-        [SerializeField, ColorUsage(true, true)] private Color _whiteColor = new Color(0.95f, 0.95f, 0.98f);
+        [SerializeField] private Color _blackColor = new Color(0.12f, 0.12f, 0.16f);
+        [SerializeField] private Color _whiteColor = new Color(0.95f, 0.95f, 0.98f);
 
         private PolarityComponent _polarity;
 
