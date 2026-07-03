@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 1175368194099745165}
   - component: {fileID: 646547140358730182}
   - component: {fileID: 6935941499969548306}
-  - component: {fileID: 8507024752774929396}
+  - component: {fileID: 4029121830450783869}
   m_Layer: 0
   m_Name: SimpleEnemy
   m_TagString: Untagged
@@ -450,7 +450,7 @@ MonoBehaviour:
   playerTag: Player
   knockbackForce: 6
   enemyPushback: 1.5
---- !u!114 &8507024752774929396
+--- !u!114 &4029121830450783869
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

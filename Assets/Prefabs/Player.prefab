@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1172324090021531726, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -230,8 +234,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.TestShooter
   _projectilePrefab: {fileID: 2682234097654052982, guid: dc6798321246b0a48b4d6a6a62f2a5bf, type: 3}
   _chargedProjectilePrefab: {fileID: 2682234097654052982, guid: ba684edfc3d0deb429eb3e9fc40d2131, type: 3}
+  _normalProjectilePool: {fileID: 0}
+  _chargedProjectilePool: {fileID: 0}
   _fireRate: 1
   _chargeTime: 2
+  _muzzle: {fileID: 0}
 --- !u!95 &134883091498771782
 Animator:
   serializedVersion: 7
