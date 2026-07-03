@@ -119,6 +119,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10603037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 10603039}
+  - component: {fileID: 10603038}
+  m_Layer: 0
+  m_Name: EnemyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &10603038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10603037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e37c9c420af70449dcdf8e6a22332e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyPool
+  enemyPrefab: {fileID: 3815200401056895797, guid: b33b08b090e9a1e468aba36dd392bc50, type: 3}
+  poolSize: 50
+--- !u!4 &10603039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10603037}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 204082860}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &204082857
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +174,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 204082860}
-  - component: {fileID: 204082861}
   - component: {fileID: 204082859}
   m_Layer: 0
   m_Name: EnemySpawner
@@ -149,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1a9db5fd694de498fd191a68623108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyWaveSpawner
-  enemyPool: {fileID: 0}
+  enemyPool: {fileID: 10603038}
   possibleSpawnPoints:
   - {fileID: 1104102713}
   - {fileID: 776467266}
@@ -168,20 +213,24 @@ MonoBehaviour:
       spacing: 3.5
   - name: Wave 2
     groups:
-    - name: Enemies
+    - name: Group 1
       enemyCount: 3
       pattern: 0
       spacing: 2
-    - name: Enemies
+    - name: Group 2
       enemyCount: 3
       pattern: 0
       spacing: 3
-    - name: Enemies
+    - name: Group 3
       enemyCount: 3
       pattern: 0
       spacing: 3
   - name: Wave 3
-    groups: []
+    groups:
+    - name: Group 1
+      enemyCount: 15
+      pattern: 0
+      spacing: 6
   timeBetweenSpawns: 0.3
   timeBetweenWaves: 3
   enemySpawnHeight: 0.5
@@ -200,22 +249,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 493489030}
+  - {fileID: 10603039}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &204082861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 204082857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1e37c9c420af70449dcdf8e6a22332e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyPool
-  enemyPrefab: {fileID: 3815200401056895797, guid: b33b08b090e9a1e468aba36dd392bc50, type: 3}
-  poolSize: 50
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
