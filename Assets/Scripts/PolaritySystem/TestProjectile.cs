@@ -4,11 +4,12 @@ namespace PolarityBreach.PolaritySystem
 {
     
     [RequireComponent(typeof(PolarityComponent))]
-    public class TestProjectile : MonoBehaviour
+    public class ShootProjectile : MonoBehaviour
     {
         [SerializeField] private float _speed = 12f;
         [SerializeField] private float _damage = 10f;
         [SerializeField] private float _lifeTime = 3f;
+        [SerializeField] private bool _disapearOnHit = true;
 
         private PolarityComponent _polarity;
         private float _spawnTime;
@@ -25,7 +26,7 @@ namespace PolarityBreach.PolaritySystem
         private void OnTriggerEnter(Collider other)
         {
             bool hit = DamageSystem.TryApplyDamage(_polarity, other.gameObject, _damage);
-            if (hit) gameObject.SetActive(false); 
+            if (hit && _disapearOnHit) gameObject.SetActive(false); 
         }
     }
 }
