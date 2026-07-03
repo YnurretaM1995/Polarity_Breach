@@ -1,42 +1,44 @@
 using System.Collections.Generic;
-using PolarityBreach.Enemy;
 using UnityEngine;
 
-public class EnemyPool : MonoBehaviour
+namespace PolarityBreach.Enemy
 {
-    [SerializeField] private Enemy enemyPrefab;
-    [SerializeField] private int poolSize = 20;
-
-    private List<Enemy> enemies = new List<Enemy>();
-
-    private void Awake()
+    public class EnemyPool : MonoBehaviour
     {
-        for (int i = 0; i < poolSize; i++)
-        {
-            Enemy enemy = Instantiate(enemyPrefab, transform);
-            enemy.gameObject.SetActive(false);
-            enemies.Add(enemy);
-        }
-    }
+        [SerializeField] private Enemy enemyPrefab;
+        [SerializeField] private int poolSize = 20;
 
-    public Enemy GetEnemy(Vector3 spawnPosition)
-    {
-        for (int i = 0; i < enemies.Count; i++)
+        private List<Enemy> enemies = new List<Enemy>();
+
+        private void Awake()
         {
-            if (!enemies[i].gameObject.activeInHierarchy)
+            for (int i = 0; i < poolSize; i++)
             {
-                enemies[i].transform.position = spawnPosition;
-                enemies[i].gameObject.SetActive(true);
-                return enemies[i];
+                Enemy enemy = Instantiate(enemyPrefab, transform);
+                enemy.gameObject.SetActive(false);
+                enemies.Add(enemy);
             }
         }
 
-        Debug.Log("No inactive enemy available in the pool.");
-        return null;
-    }
+        public Enemy GetEnemy(Vector3 spawnPosition)
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (!enemies[i].gameObject.activeInHierarchy)
+                {
+                    enemies[i].transform.position = spawnPosition;
+                    enemies[i].gameObject.SetActive(true);
+                    return enemies[i];
+                }
+            }
 
-    public void ReturnEnemy(Enemy enemy)
-    {
-        enemy.gameObject.SetActive(false);
+            Debug.Log("No inactive enemy available in the pool.");
+            return null;
+        }
+
+        public void ReturnEnemy(Enemy enemy)
+        {
+            enemy.gameObject.SetActive(false);
+        }
     }
 }
