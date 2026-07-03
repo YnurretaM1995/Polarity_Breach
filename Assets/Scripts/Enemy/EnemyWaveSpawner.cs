@@ -90,7 +90,7 @@ namespace PolarityBreach.Enemy
                     Vector3 spawnPosition = spawnPoint.position + offsets[i];
                     spawnPosition.y = enemySpawnHeight;
 
-                    SpawnEnemyAtPosition(spawnPosition);
+                    SpawnEnemyAtPosition(spawnPosition, group.polarity);
 
                     yield return new WaitForSeconds(timeBetweenSpawns);
                 }
