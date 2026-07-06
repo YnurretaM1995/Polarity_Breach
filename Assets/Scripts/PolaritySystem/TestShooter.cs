@@ -4,18 +4,14 @@ using UnityEngine.InputSystem;
 
 namespace PolarityBreach.PolaritySystem
 {
-   
     [RequireComponent(typeof(PolarityComponent))]
+    [RequireComponent(typeof(PlayerStatsData))]
     public class TestShooter : MonoBehaviour
     {
         [SerializeField] private GameObject _projectilePrefab;
         [SerializeField] private GameObject _chargedProjectilePrefab;
         [SerializeField] private ProjectilePool _normalProjectilePool;
         [SerializeField] private ProjectilePool _chargedProjectilePool;
-        
-        [Header("Shoot Settings")]
-        [SerializeField] private float _fireRate = 0.15f;
-        [SerializeField] private float _chargeTime;
         
         private bool _isCharging;
         private bool _chargeReady;
@@ -25,10 +21,12 @@ namespace PolarityBreach.PolaritySystem
         private InputAction _fireAction;
         private float _lastShotTime = float.NegativeInfinity;
         private Camera _cam;
+        private PlayerStatsData _playerStats;
 
         private void Awake()
         {
             _polarity = GetComponent<PolarityComponent>();
+            _playerStats = GetComponent<PlayerStatsData>();
             _cam = Camera.main;
             if (_muzzle == null) 
                 _muzzle = transform;
@@ -52,23 +50,26 @@ namespace PolarityBreach.PolaritySystem
 
         private void Update()
         {
-            if (_fireAction.WasPressedThisFrame())
+            if (_playerStats.chargeShotUnlocked)
             {
-                StartCharging();
-                return;
-            }
-            
-            if (_fireAction.WasReleasedThisFrame())
-            {
-                ReleaseCharge();
+                if (_fireAction.WasPressedThisFrame())
+                {
+                    StartCharging();
+                    return;
+                }
+
+                if (_fireAction.WasReleasedThisFrame())
+                {
+                    ReleaseCharge();
+                }
+
+                if (_fireAction.IsPressed())
+                {
+                    UpdateCharging();
+                    return;
+                }
             }
 
-            if (_fireAction.IsPressed())
-            {
-                UpdateCharging();
-                return;
-            }
-            
             AutoFire();
         }
         
@@ -89,7 +90,7 @@ namespace PolarityBreach.PolaritySystem
         {
             float holdTime = Time.time - _chargeStartTime;
 
-            if (holdTime >= _chargeTime && !_chargeReady)
+            if (holdTime >= _playerStats.chargeTime && !_chargeReady)
             {
                 _chargeReady = true;
                 Debug.Log("Charge Shot READY!");
@@ -113,15 +114,21 @@ namespace PolarityBreach.PolaritySystem
         
         private void Shoot()
         {
-            ShootFromPool(_normalProjectilePool);
+            ShootFromPool(_normalProjectilePool, 
+                _playerStats.attackSpeed,
+                _playerStats.attackDamage,
+                _playerStats.knockBackPower);
         }
         
         private void ChargeShot()
         {
-            ShootFromPool(_chargedProjectilePool);
+            ShootFromPool(_chargedProjectilePool,
+                _playerStats.chargeShotSpeed,
+                _playerStats.chargeShotDamage,
+                _playerStats.chargeShotKnockBackPower);
         }
 
-        private void ShootFromPool(ProjectilePool pool)
+        private void ShootFromPool(ProjectilePool pool, float speed, float damage, float knockbackForce)
         {
             if (pool == null) return;
 
@@ -132,17 +139,19 @@ namespace PolarityBreach.PolaritySystem
             ShootProjectile projectile = pool.GetProjectile(_muzzle.position, Quaternion.LookRotation(dir));
 
             if (projectile == null) return;
+            projectile.SetStats(speed, damage, knockbackForce);
             
             var bulletPolarity = projectile.GetComponent<PolarityComponent>();
             if (bulletPolarity != null) bulletPolarity.SetPolarity(_polarity.CurrentPolarity);
 
             _lastShotTime = Time.time;
         }
+
         
         
         private void AutoFire()
         {
-            if (Time.time >= _lastShotTime + _fireRate)
+            if (Time.time >= _lastShotTime + _playerStats.attackSpeedDelay)
             {
                 Shoot();
             }
