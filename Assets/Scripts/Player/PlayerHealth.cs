@@ -7,18 +7,23 @@ namespace PolarityBreach.Player
 {
     public class PlayerHealth : MonoBehaviour, IDamageable
     {
-        [SerializeField] private float maxHealth = 100f;
+        private PlayerStatsData playerStats;
         private float currentHealth;
 
         public event Action OnDied;
 
         public float CurrentHealth => currentHealth;
-        public float MaxHealth => maxHealth;
+        public float MaxHealth => playerStats.maxHealth;
         public bool IsDead => currentHealth <= 0f;
+        
+        private void Awake()
+        {
+            playerStats = GetComponent<PlayerStatsData>();
+        }
 
         private void OnEnable()
         {
-            currentHealth = maxHealth;
+            currentHealth = playerStats.maxHealth;
         }
 
         public void TakeDamage(float amount)
