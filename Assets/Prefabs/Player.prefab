@@ -79,6 +79,9 @@ PrefabInstance:
       addedObject: {fileID: 6385366409103021146}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 5093819952255073565}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1539293552844303146}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
       insertIndex: -1
@@ -168,6 +171,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &5093819952255073565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102381678693926401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c31e96ce11c0864c94d666641fb61e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerStatsData
+  movementSpeed: 0
+  maxHealth: 0
+  polaritySwitchCooldown: 0
+  dashUnlocked: 0
+  dashSpeed: 0
+  dashDuration: 0
+  dashCooldown: 0
+  attackSpeedDelay: 0
+  attackPower: 0
+  knockBackPower: 0
+  chargeTime: 0
+  chargeShotUnlocked: 0
 --- !u!114 &1539293552844303146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,8 +269,6 @@ MonoBehaviour:
   _chargedProjectilePrefab: {fileID: 2682234097654052982, guid: ba684edfc3d0deb429eb3e9fc40d2131, type: 3}
   _normalProjectilePool: {fileID: 0}
   _chargedProjectilePool: {fileID: 0}
-  _fireRate: 1
-  _chargeTime: 2
   _muzzle: {fileID: 0}
 --- !u!95 &134883091498771782
 Animator:
@@ -292,7 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3123ea626d7794846b27bbc54f621735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerHealth
-  maxHealth: 100
 --- !u!114 &7087308136952612965
 MonoBehaviour:
   m_ObjectHideFlags: 0
