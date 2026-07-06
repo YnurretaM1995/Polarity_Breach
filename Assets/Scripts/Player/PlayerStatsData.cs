@@ -7,18 +7,27 @@ namespace PolarityBreach.Player
         [Header("Player Stats")] 
         public float movementSpeed;
         public float maxHealth;
-        public float polaritySwitchDelay;
-
-        [Header("Player Skills Unlocks")] 
-        public bool dashUnlocked;
+        public float polaritySwitchCooldown;
         
         [Header("Weapon Stats")] 
+        public float attackSpeedDelay;
+        public float attackDamage;
         public float attackSpeed;
-        public float attackPower;
         public float knockBackPower;
-        public float chargeTime;
 
-        [Header("Weapon Skills Unlocks")] 
+        [Header("Unlock Dash Skill")]
+        public bool dashUnlocked;
+        [Header("Dash Stats")] 
+        public float dashSpeed;
+        public float dashDuration;
+        public float dashCooldown;
+        
+        [Header("Unlock ChargeShot Skill")]
         public bool chargeShotUnlocked;
+        [Header("ChargeShot Stats")] 
+        public float chargeShotDamage;
+        public float chargeShotSpeed;
+        public float chargeShotKnockBackPower;
+        public float chargeTime;
     }
 }
