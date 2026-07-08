@@ -26,7 +26,7 @@ namespace PolarityBreach
         {
             if (Keyboard.current != null && Keyboard.current.f1Key.wasPressedThisFrame)
             {
-                showMenu = !showMenu;
+                ToggleMenu();
             }
         }
 
@@ -88,6 +88,20 @@ namespace PolarityBreach
             
             GUILayout.EndScrollView();
             GUILayout.EndArea();
+        }
+        public void ToggleMenu()
+        {
+            showMenu = !showMenu;
+        }
+
+        public void OpenMenu()
+        {
+            showMenu = true;
+        }
+        
+        public void CloseMenu()
+        {
+            showMenu = false;
         }
         
         private float Slider(string label, float value, float min, float max)
