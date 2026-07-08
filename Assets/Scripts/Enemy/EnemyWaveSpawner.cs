@@ -169,5 +169,10 @@ namespace PolarityBreach.Enemy
 
             enemyPool.ReturnEnemy(enemy);
         }
+        
+        public void DebugCompleteCurrentWave()
+        {
+            enemyPool.KillAllActiveEnemies();
+        }
     }
 }
