@@ -60,6 +60,7 @@ namespace PolarityBreach.Player
             IsPaused = false;
             pausePanel.SetActive(false);
             if (cheatPanel != null) cheatPanel.SetActive(false); 
+            if (cheatMenu != null) cheatMenu.CloseMenu();
             Time.timeScale = 1f;
             OnPauseChanged?.Invoke(false);
         }
@@ -72,9 +73,18 @@ namespace PolarityBreach.Player
         
         public void OpenCheatMenu()
         {
-            cheatMenu.OpenMenu();   
-            Resume();              
+            cheatMenu.ToggleMenu();  
+            ResumeGameplay();           
         }
+        
+        private void ResumeGameplay()
+        {
+            IsPaused = false;
+            pausePanel.SetActive(false);
+            Time.timeScale = 1f;
+            OnPauseChanged?.Invoke(false);
+        }
+        
 
         public void BackToPauseMenu()
         {

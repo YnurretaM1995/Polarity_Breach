@@ -92,6 +92,11 @@ namespace PolarityBreach
             showMenu = true;
         }
         
+        public void CloseMenu()
+        {
+            showMenu = false;
+        }
+        
         private float Slider(string label, float value, float min, float max)
         {
             GUILayout.Label(label + ": " + value.ToString("0.00"));
