@@ -9,6 +9,7 @@ namespace PolarityBreach.Player
     {
         private PlayerStatsData playerStats;
         private float currentHealth;
+        public bool GodMode { get; set; } = false;
 
         public event Action OnDied;
 
@@ -29,6 +30,7 @@ namespace PolarityBreach.Player
         public void TakeDamage(float amount)
         {
             if (IsDead) return;
+            if (GodMode) return;
 
             currentHealth -= amount;
             Debug.Log($"Life: {currentHealth}");
@@ -38,6 +40,11 @@ namespace PolarityBreach.Player
                 currentHealth = 0f;
                 OnDied?.Invoke();
             }
+        }
+        
+        public void FullHeal()
+        {
+            currentHealth = playerStats.maxHealth;
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using PolarityBreach.PolaritySystem;
 using UnityEngine;
-using PolarityBreach.PolaritySystem;
+
 
 namespace PolarityBreach.Enemy
 {
@@ -44,6 +44,7 @@ namespace PolarityBreach.Enemy
         [Header("Random Cluster Settings")]
         [SerializeField] private float clusterRadius = 3f;
 
+        private System.Collections.Generic.List<Enemy> activeEnemies = new System.Collections.Generic.List<Enemy>();
         private int aliveEnemies;
 
         private void Start()
@@ -125,6 +126,7 @@ namespace PolarityBreach.Enemy
 
             aliveEnemies++;
             enemy.Spawn(this);
+            activeEnemies.Add(enemy);
         }
 
         private Vector3[] GetPatternOffsets(SpawnPattern pattern, int enemyCount, float spacing)
@@ -166,8 +168,17 @@ namespace PolarityBreach.Enemy
         public void EnemyDied(Enemy enemy)
         {
             aliveEnemies--;
-
+            activeEnemies.Remove(enemy);
             enemyPool.ReturnEnemy(enemy);
+        }
+        
+        public void SkipCurrentWave()
+        {
+            for (int i = activeEnemies.Count - 1; i >= 0; i--)
+            {
+                if (activeEnemies[i] != null)
+                    activeEnemies[i].Kill();
+            }
         }
     }
 }
