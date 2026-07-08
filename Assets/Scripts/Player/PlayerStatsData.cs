@@ -29,5 +29,8 @@ namespace PolarityBreach.Player
         public float chargeShotSpeed;
         public float chargeShotKnockBackPower;
         public float chargeTime;
+
+        [Header("Debug")] 
+        public bool godMode;
     }
 }

@@ -203,7 +203,7 @@ MonoBehaviour:
   playerHealth: {fileID: 1817478971}
   waveSpawner: {fileID: 412696441}
   player: {fileID: 1817478970}
-  bossRoomPoint: {fileID: 1003845658}
+  bossRoomPoint: {fileID: 0}
 --- !u!114 &53516365
 MonoBehaviour:
   m_ObjectHideFlags: 0

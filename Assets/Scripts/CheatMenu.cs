@@ -41,6 +41,7 @@ namespace PolarityBreach
             GUILayout.Label("Player Stats");
             playerStats.movementSpeed = Slider("Movement Speed", playerStats.movementSpeed, 0f, 20f);
             playerStats.maxHealth = Slider("Max Health", playerStats.maxHealth, 1f, 300f);
+            playerStats.godMode = GUILayout.Toggle(playerStats.godMode, "God Mode");
             playerStats.polaritySwitchCooldown = Slider("Polarity Cooldown", playerStats.polaritySwitchCooldown, 0f, 5f);
 
             GUILayout.Space(10);
