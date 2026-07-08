@@ -31,18 +31,20 @@ namespace PolarityBreach.Enemy
 
     public class EnemyWaveSpawner : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private EnemyPool enemyPool;
+        [Header("References")] [SerializeField]
+        private EnemyPool enemyPool;
+
         [SerializeField] private Transform[] possibleSpawnPoints;
 
-        [Header("Wave Settings")]
-        [SerializeField] private EnemyWave[] waves;
+        [Header("Wave Settings")] [SerializeField]
+        private EnemyWave[] waves;
+
         [SerializeField] private float timeBetweenSpawns = 0.3f;
         [SerializeField] private float timeBetweenWaves = 3f;
         [SerializeField] private float enemySpawnHeight = 0.5f;
 
-        [Header("Random Cluster Settings")]
-        [SerializeField] private float clusterRadius = 3f;
+        [Header("Random Cluster Settings")] [SerializeField]
+        private float clusterRadius = 3f;
 
         private System.Collections.Generic.List<Enemy> activeEnemies = new System.Collections.Generic.List<Enemy>();
         private int aliveEnemies;
@@ -116,7 +118,7 @@ namespace PolarityBreach.Enemy
                 Debug.LogWarning("EnemyPool did not return an enemy.");
                 return;
             }
-            
+
             PolarityComponent polarityComponent = enemy.GetComponent<PolarityComponent>();
 
             if (polarityComponent != null)
@@ -171,11 +173,11 @@ namespace PolarityBreach.Enemy
             activeEnemies.Remove(enemy);
             enemyPool.ReturnEnemy(enemy);
         }
-        
+
         public void DebugCompleteCurrentWave()
         {
             enemyPool.KillAllActiveEnemies();
-		}
+        }
 
         public void SkipCurrentWave()
         {
@@ -184,5 +186,6 @@ namespace PolarityBreach.Enemy
                 if (activeEnemies[i] != null)
                     activeEnemies[i].Kill();
             }
-   		}
+        }
+    }
 }

@@ -23,6 +23,7 @@ namespace PolarityBreach.Player
 
         public void TakeDamage(float amount)
         {
+            if (playerStats.godMode) return;
             if (IsDead) return;
             if (GodMode) return;
 
