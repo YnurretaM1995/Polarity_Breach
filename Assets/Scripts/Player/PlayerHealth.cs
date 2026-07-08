@@ -11,31 +11,25 @@ namespace PolarityBreach.Player
         private float currentHealth;
 
         public event Action OnDied;
-
-        public float CurrentHealth => currentHealth;
+        
         public float MaxHealth => playerStats.maxHealth;
-        public bool IsDead => currentHealth <= 0f;
+        public bool IsDead => playerStats.maxHealth <= 0f;
         
         private void Awake()
         {
             playerStats = GetComponent<PlayerStatsData>();
         }
 
-        private void OnEnable()
-        {
-            currentHealth = playerStats.maxHealth;
-        }
-
         public void TakeDamage(float amount)
         {
             if (IsDead) return;
 
-            currentHealth -= amount;
-            Debug.Log($"Life: {currentHealth}");
+            playerStats.maxHealth -= amount;
+            Debug.Log($"Life: {playerStats.maxHealth}");
 
-            if (currentHealth <= 0f)
+            if (playerStats.maxHealth <= 0f)
             {
-                currentHealth = 0f;
+                playerStats.maxHealth = 0f;
                 OnDied?.Invoke();
             }
         }
