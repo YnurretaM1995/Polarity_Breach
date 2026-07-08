@@ -107,6 +107,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7087308136952612965}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2351572942621127658}
   m_SourcePrefab: {fileID: 100100000, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
 --- !u!1 &6102381678693926401 stripped
 GameObject:
@@ -186,15 +189,19 @@ MonoBehaviour:
   movementSpeed: 0
   maxHealth: 0
   polaritySwitchCooldown: 0
+  attackSpeedDelay: 0
+  attackDamage: 0
+  attackSpeed: 0
+  knockBackPower: 0
   dashUnlocked: 0
   dashSpeed: 0
   dashDuration: 0
   dashCooldown: 0
-  attackSpeedDelay: 0
-  attackPower: 0
-  knockBackPower: 0
-  chargeTime: 0
   chargeShotUnlocked: 0
+  chargeShotDamage: 0
+  chargeShotSpeed: 0
+  chargeShotKnockBackPower: 0
+  chargeTime: 0
 --- !u!114 &1539293552844303146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,10 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a083dbc96663f14995110a948c331e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 7
-  dashSpeed: 30
-  dashDuration: 0.2
-  dashCooldown: 1
 --- !u!114 &2124806471967177995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +239,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477547c65adbc6e4faf7e3abacfde6c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PlayerPolarityController
-  _switchCooldown: 0.25
   _switchActionRef: {fileID: 0}
 --- !u!114 &888351089162473407
 MonoBehaviour:
@@ -329,3 +331,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f02e3c778a0ec6439f4b4a2872c0629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerDeathHandler
+--- !u!114 &-2351572942621127658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102381678693926401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fe7ec06ef25e84cb8ecf8042bbd823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.CheatMenu
+  playerStats: {fileID: 0}
+  waveSpawner: {fileID: 0}

@@ -40,5 +40,16 @@ namespace PolarityBreach.Enemy
         {
             enemy.gameObject.SetActive(false);
         }
+        
+        public void KillAllActiveEnemies()
+        {
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if (enemies[i].gameObject.activeInHierarchy)
+                {
+                    enemies[i].Kill();
+                }
+            }
+        }
     }
 }

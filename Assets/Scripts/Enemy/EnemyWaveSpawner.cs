@@ -172,6 +172,11 @@ namespace PolarityBreach.Enemy
             enemyPool.ReturnEnemy(enemy);
         }
         
+        public void DebugCompleteCurrentWave()
+        {
+            enemyPool.KillAllActiveEnemies();
+		}
+
         public void SkipCurrentWave()
         {
             for (int i = activeEnemies.Count - 1; i >= 0; i--)
@@ -179,6 +184,5 @@ namespace PolarityBreach.Enemy
                 if (activeEnemies[i] != null)
                     activeEnemies[i].Kill();
             }
-        }
-    }
+   		}
 }

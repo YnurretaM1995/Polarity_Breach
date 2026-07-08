@@ -7,10 +7,6 @@ namespace PolarityBreach.PolaritySystem
     [RequireComponent(typeof(PolarityComponent))]
     public class PlayerPolarityController : MonoBehaviour
     {
-        [Header("Cooldown")]
-        [Min(0f)]
-        [SerializeField] private float _switchCooldown = 0.25f;
-
         [Header("Input")]
         [SerializeField] private InputActionReference _switchActionRef;
 
@@ -18,15 +14,16 @@ namespace PolarityBreach.PolaritySystem
         private InputAction _switchAction;
         private bool _ownsAction;
         private float _lastSwitchTime = float.NegativeInfinity;
+        private PlayerStatsData _playerStats;
         
         public float SwitchCooldown
         {
-            get => _switchCooldown;
-            set => _switchCooldown = Mathf.Max(0f, value);
+            get => _playerStats.polaritySwitchCooldown;
+            set => _playerStats.polaritySwitchCooldown = Mathf.Max(0f, value);
         }
         
-        public float CooldownRemaining => Mathf.Max(0f, (_lastSwitchTime + _switchCooldown) - Time.time);
-        public bool CanSwitch => Time.time >= _lastSwitchTime + _switchCooldown;
+        public float CooldownRemaining => Mathf.Max(0f, (_lastSwitchTime + _playerStats.polaritySwitchCooldown) - Time.time);
+        public bool CanSwitch => Time.time >= _lastSwitchTime + _playerStats.polaritySwitchCooldown;
 
         private void Awake()
         {
@@ -52,6 +49,7 @@ namespace PolarityBreach.PolaritySystem
         private void GetComponents()
         {
             _polarity = GetComponent<PolarityComponent>();
+            _playerStats = GetComponent<PlayerStatsData>();
         }
 
         private void OnEnable()
