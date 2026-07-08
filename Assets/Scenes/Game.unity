@@ -203,7 +203,7 @@ MonoBehaviour:
   playerHealth: {fileID: 1817478971}
   waveSpawner: {fileID: 412696441}
   player: {fileID: 1817478970}
-  bossRoomPoint: {fileID: 0}
+  bossRoomPoint: {fileID: 1003845658}
 --- !u!114 &53516365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4026,7 +4026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.ProjectilePool
   projectilePrefab: {fileID: 6054802736122291981, guid: dc6798321246b0a48b4d6a6a62f2a5bf, type: 3}
-  poolSize: 15
+  poolSize: 50
 --- !u!4 &1755451375
 Transform:
   m_ObjectHideFlags: 0
