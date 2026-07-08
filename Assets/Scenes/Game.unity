@@ -4389,6 +4389,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 1817478972}
+    - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: waveSpawner
+      value: 
+      objectReference: {fileID: 412696441}
     - target: {fileID: 5093819952255073565, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: dashSpeed
       value: 30

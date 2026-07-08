@@ -9,6 +9,9 @@ namespace PolarityBreach.Player
         [Header("Panels")]
         [SerializeField] private GameObject pausePanel;
         [SerializeField] private GameObject cheatPanel;
+        
+        [Header("Cheat")]
+        [SerializeField] private CheatMenu cheatMenu;
 
         [Header("Cheat References")]
         [SerializeField] private PlayerStatsData playerStats;
@@ -65,6 +68,12 @@ namespace PolarityBreach.Player
         {
             pausePanel.SetActive(false);
             cheatPanel.SetActive(true);
+        }
+        
+        public void OpenCheatMenu()
+        {
+            cheatMenu.OpenMenu();   
+            Resume();              
         }
 
         public void BackToPauseMenu()
