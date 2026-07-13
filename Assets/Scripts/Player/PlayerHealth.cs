@@ -1,38 +1,45 @@
 using System;
 using UnityEngine;
 using PolarityBreach.PolaritySystem.Interfaces;
-using UnityEngine.AdaptivePerformance;
 
 namespace PolarityBreach.Player
 {
     public class PlayerHealth : MonoBehaviour, IDamageable
     {
+        [SerializeField] private BloodOverlay bloodOverlay;
         private PlayerStatsData playerStats;
         private float currentHealth;
         public bool GodMode { get; set; } = false;
 
         public event Action OnDied;
         
+        public float CurrentHealth => currentHealth;
         public float MaxHealth => playerStats.maxHealth;
-        public bool IsDead => playerStats.maxHealth <= 0f;
+        public bool IsDead => currentHealth <= 0f;
         
         private void Awake()
         {
             playerStats = GetComponent<PlayerStatsData>();
         }
 
+        private void OnEnable()
+        {
+            currentHealth = playerStats.maxHealth; 
+        }
         public void TakeDamage(float amount)
         {
             if (playerStats.godMode) return;
             if (IsDead) return;
             if (GodMode) return;
 
-            playerStats.maxHealth -= amount;
-            Debug.Log($"Life: {playerStats.maxHealth}");
+            currentHealth  -= amount;
+            Debug.Log($"Life: { currentHealth }");
+            
+            if (bloodOverlay != null) bloodOverlay.OnDamaged();
 
-            if (playerStats.maxHealth <= 0f)
+            if (currentHealth <= 0f)
             {
-                playerStats.maxHealth = 0f;
+                currentHealth = 0f;
                 OnDied?.Invoke();
             }
         }
