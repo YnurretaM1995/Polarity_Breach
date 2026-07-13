@@ -2925,6 +2925,7 @@ MonoBehaviour:
   xRotation: 75
   yRotation: 0
   zRotation: 0
+  shakeDecay: 5
 --- !u!1 &816700532
 GameObject:
   m_ObjectHideFlags: 0
@@ -7394,6 +7395,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4047813359756881081, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 784123174}
     - target: {fileID: -4047813359756881081, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: bloodOverlay
       value: 
