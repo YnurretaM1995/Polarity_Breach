@@ -2921,7 +2921,7 @@ MonoBehaviour:
   offsetX: 0
   offsetZ: -4
   offsetY: 19
-  smoothTime: 0
+  smoothTime: 1
   xRotation: 75
   yRotation: 0
   zRotation: 0
