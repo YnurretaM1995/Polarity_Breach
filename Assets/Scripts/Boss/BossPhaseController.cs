@@ -1,19 +1,23 @@
+using PolarityBreach.Enemy;
 using UnityEngine;
 
-namespace PolarityBreach
+
+namespace PolarityBreach.Boss
 {
-    public class B : MonoBehaviour
+    public class BossPhaseController : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        [SerializeField] private BossPhaseOneAttack phaseOneAttack;
+
+        private EnemyHealth health;
+
+        private void Awake()
         {
-        
+            health = GetComponent<EnemyHealth>();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Start()
         {
-        
+            phaseOneAttack.StartPhase();
         }
     }
 }
