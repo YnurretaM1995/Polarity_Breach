@@ -7,6 +7,8 @@ namespace PolarityBreach.Player
     public class PlayerHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] private BloodOverlay bloodOverlay;
+        [SerializeField] private CameraControlScript cameraShake;
+        
         private PlayerStatsData playerStats;
         private float currentHealth;
         public bool GodMode { get; set; } = false;
@@ -36,6 +38,7 @@ namespace PolarityBreach.Player
             Debug.Log($"Life: { currentHealth }");
             
             if (bloodOverlay != null) bloodOverlay.OnDamaged();
+            if (cameraShake != null) cameraShake.Shake(1.25f);
 
             if (currentHealth <= 0f)
             {
