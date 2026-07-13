@@ -312,9 +312,9 @@ MonoBehaviour:
   playerHealth: {fileID: 1817478971}
   minAlpha: 0
   maxAlpha: 0.7
-  pulseAmount: 0.15
-  slowPulse: 1.5
-  fastPulse: 6
+  pulseAmount: 0.25
+  slowPulse: 3
+  fastPulse: 20
   hitFlash: 0.4
   hitFadeSpeed: 2
 --- !u!4 &77186480 stripped
