@@ -28,8 +28,16 @@ namespace PolarityBreach.Enemy
             _polarity = GetComponent<PolarityComponent>();
             if (firePoint == null) firePoint = transform;
             ownColliders = GetComponentsInChildren<Collider>();
+            
             if (projectilePool == null)
-                projectilePool = FindObjectOfType<EnemyProjectilePool>();
+            {
+                GameObject poolObject = GameObject.Find("EnemyProjectilePool");
+
+                if (poolObject != null)
+                {
+                    projectilePool = poolObject.GetComponent<EnemyProjectilePool>();
+                }
+            }
         }
 
         private void Update()
