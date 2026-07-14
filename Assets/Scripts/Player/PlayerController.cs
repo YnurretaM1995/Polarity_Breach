@@ -17,6 +17,10 @@ namespace PolarityBreach.Player
         private bool canDash = true;
         private Vector3 dashDirection;
         private PlayerStatsData _playerStats;
+        
+        [Header("Movement Feel")]
+        [SerializeField] private float acceleration = 12f;   
+        [SerializeField] private float deceleration = 16f; 
 
         private void Awake()
         {
@@ -123,7 +127,16 @@ namespace PolarityBreach.Player
 
         private void ApplyMovementPhysics()
         {
-            rb.linearVelocity = new Vector3(moveInput.x * _playerStats.movementSpeed, rb.linearVelocity.y, moveInput.z * _playerStats.movementSpeed);
+            // rb.linearVelocity = new Vector3(moveInput.x * _playerStats.movementSpeed, rb.linearVelocity.y, moveInput.z * _playerStats.movementSpeed);
+           
+            Vector3 targetVelocity = new Vector3(moveInput.x * _playerStats.movementSpeed, 0f, moveInput.z * _playerStats.movementSpeed);
+
+            Vector3 currentVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+            float rate = moveInput.sqrMagnitude > 0.01f ? acceleration : deceleration;
+            Vector3 newVelocity = Vector3.MoveTowards(currentVelocity, targetVelocity, rate * Time.fixedDeltaTime);
+
+            rb.linearVelocity = new Vector3(newVelocity.x, rb.linearVelocity.y, newVelocity.z);
+
         }
 
         private void ApplyDashPhysics()
