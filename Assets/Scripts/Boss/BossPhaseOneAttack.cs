@@ -9,14 +9,15 @@ namespace PolarityBreach.Boss
     {
         [SerializeField] private EnemyProjectilePool projectilePool;
         [SerializeField] private Transform firePoint;
-        
+
         [SerializeField] private BossPhaseData phaseData;
 
         [SerializeField] private float angleOffset = 10f;
 
         private float currentAngleOffset;
+        private bool useInstantCircle = true;
         private Coroutine _phaseRoutine;
-        
+
         public void StartPhase()
         {
             if (phaseData == null)
@@ -34,21 +35,9 @@ namespace PolarityBreach.Boss
 
         public void StopPhase()
         {
-            if(_phaseRoutine != null)
+            if (_phaseRoutine != null)
             {
                 StopCoroutine(_phaseRoutine);
-            }
-        }
-
-        private IEnumerator PhaseOneLoop()
-        {
-            while (true)
-            {
-                Polarity randomPolarity = GetRandomPolarity();
-                
-                FireCircle(randomPolarity);
-
-                yield return new WaitForSeconds(phaseData.projectileFireRate);
             }
         }
 
@@ -57,20 +46,56 @@ namespace PolarityBreach.Boss
             return Random.value < 0.5d ? Polarity.White : Polarity.Black;
         }
 
-        private void FireCircle(Polarity polarity)
+        private IEnumerator PhaseOneLoop()
         {
-            for (int i = 0; i < phaseData.bulletCount; i++)
+            while (true)
             {
-                float angle = ((360f / phaseData.bulletCount) * i) + currentAngleOffset;
+                Polarity randomPolarity = GetRandomPolarity();
+
+                if (useInstantCircle)
+                {
+                    FireCircleInstant(randomPolarity);
+                }
+                else
+                {
+                    yield return StartCoroutine(FireCircleSequence(randomPolarity));
+                }
+
+                useInstantCircle = !useInstantCircle;
+
+                yield return new WaitForSeconds(phaseData.timeBetweenAttacks);
+            }
+        }
+
+        private void FireCircleInstant(Polarity polarity)
+        {
+            for (int i = 0; i < phaseData.instantBulletCount; i++)
+            {
+                float angle = ((360f / phaseData.instantBulletCount) * i) + phaseData.angleOffsetPerAttack;
                 Vector3 direction = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
 
-                FireProjectile(direction, polarity);
+                FireProjectile(direction, polarity, phaseData.instantProjectileSpeed, phaseData.instantProjectileDamage);
             }
-            
-            currentAngleOffset += angleOffset;
+
+            currentAngleOffset += 180f / phaseData.instantBulletCount;
+        }
+
+        private IEnumerator FireCircleSequence(Polarity polarity)
+        {
+            for (int i = 0; i < phaseData.sequenceBulletCount; i++)
+            {
+                float angle = ((360f / phaseData.sequenceBulletCount) * i) + phaseData.angleOffsetPerAttack;
+                Vector3 direction = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
+
+                FireProjectile(direction, polarity, phaseData.sequenceProjectileSpeed, phaseData.sequenceProjectileDamage);
+
+                yield return new WaitForSeconds(phaseData.sequenceBulletDelay);
+            }
+
+            currentAngleOffset += 180f / phaseData.sequenceBulletCount;
         }
         
-        private void FireProjectile(Vector3 direction, Polarity polarity)
+        private void FireProjectile(Vector3 direction, Polarity polarity, float projectileSpeed, float projectileDamage)
         {
             if (projectilePool == null)
             {
@@ -88,7 +113,7 @@ namespace PolarityBreach.Boss
                 projectilePolarity.SetPolarity(polarity);
             }
 
-            projectile.Launch(direction, phaseData.projectileSpeed, phaseData.projectileDamage);
+            projectile.Launch(direction, projectileSpeed, projectileDamage);
         }
     }
 }
