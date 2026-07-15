@@ -11,7 +11,10 @@ namespace PolarityBreach.Boss
         [SerializeField] private Transform firePoint;
         
         [SerializeField] private BossPhaseData phaseData;
-        
+
+        [SerializeField] private float angleOffset = 10f;
+
+        private float currentAngleOffset;
         private Coroutine _phaseRoutine;
         
         public void StartPhase()
@@ -41,21 +44,30 @@ namespace PolarityBreach.Boss
         {
             while (true)
             {
-                FireCircle(phaseData.attackPolarity);
+                Polarity randomPolarity = GetRandomPolarity();
+                
+                FireCircle(randomPolarity);
 
                 yield return new WaitForSeconds(phaseData.projectileFireRate);
             }
+        }
+
+        private Polarity GetRandomPolarity()
+        {
+            return Random.value < 0.5d ? Polarity.White : Polarity.Black;
         }
 
         private void FireCircle(Polarity polarity)
         {
             for (int i = 0; i < phaseData.bulletCount; i++)
             {
-                float angle = (360f / phaseData.bulletCount) * i;
+                float angle = ((360f / phaseData.bulletCount) * i) + currentAngleOffset;
                 Vector3 direction = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
 
                 FireProjectile(direction, polarity);
             }
+            
+            currentAngleOffset += angleOffset;
         }
         
         private void FireProjectile(Vector3 direction, Polarity polarity)
@@ -65,10 +77,7 @@ namespace PolarityBreach.Boss
                 return;
             }
 
-            Projectile projectile = projectilePool.GetProjectile(
-                firePoint.position,
-                Quaternion.LookRotation(direction)
-            );
+            Projectile projectile = projectilePool.GetProjectile(firePoint.position, Quaternion.LookRotation(direction));
 
             if (projectile == null) return;
 
