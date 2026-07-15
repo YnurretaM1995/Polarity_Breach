@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: BossPhase1Data
   m_EditorClassIdentifier: 
   phaseName: Phase 1
-  bulletCount: 50
-  projectileSpeed: 15
-  projectileDamage: 10
-  projectileFireRate: 2
-  attackPolarity: 1
+  timeBetweenAttacks: 2
+  angleOffsetPerAttack: 0.5
+  randomizePolarity: 1
+  fallbackPolarity: 1
+  instantBulletCount: 25
+  instantProjectileSpeed: 10
+  instantProjectileDamage: 10
+  sequenceBulletCount: 50
+  sequenceProjectileSpeed: 30
+  sequenceProjectileDamage: 10
+  sequenceBulletDelay: 0.03
