@@ -9,11 +9,23 @@ namespace PolarityBreach.Boss
         [Header("Phase Info")]
         public string phaseName = "Phase 1";
 
-        [Header("Circle Projectile Attack")]
-        public int bulletCount = 25;
-        public float projectileSpeed = 10f;
-        public float projectileDamage = 10f;
-        public float projectileFireRate = 2f;
-        public Polarity attackPolarity = Polarity.White;
+        [Header("Shared Attack Settings")]
+        public float timeBetweenAttacks = 2f;
+        public float angleOffsetPerAttack = 0.5f;
+        public bool randomizePolarity = true;
+        public Polarity fallbackPolarity = Polarity.White;
+        
+        [Header("Instant Circle Attack")]
+        public int instantBulletCount = 25;
+        public float instantProjectileSpeed = 10f;
+        public float instantProjectileDamage = 20f;
+
+        [Header("Sequence Circle Attack")]
+        public int sequenceBulletCount = 50;
+        public float sequenceProjectileSpeed = 500f;
+        public float sequenceProjectileDamage = 10f;
+        public float sequenceBulletDelay = 0.2f;
     }
+    
+    
 }
