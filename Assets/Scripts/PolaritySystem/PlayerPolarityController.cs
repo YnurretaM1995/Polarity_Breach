@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using PolarityBreach.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -15,6 +16,8 @@ namespace PolarityBreach.PolaritySystem
         private bool _ownsAction;
         private float _lastSwitchTime = float.NegativeInfinity;
         private PlayerStatsData _playerStats;
+
+        [SerializeField] private AudioClip colorSound;
         
         public float SwitchCooldown
         {
@@ -78,6 +81,7 @@ namespace PolarityBreach.PolaritySystem
             if (!CanSwitch) return false;
             _polarity.Toggle();
             _lastSwitchTime = Time.time;
+            AudioHandler.Play3DSound(colorSound, transform.position);
             return true;
         }
         

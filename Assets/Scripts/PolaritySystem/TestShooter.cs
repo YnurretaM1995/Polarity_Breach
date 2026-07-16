@@ -1,5 +1,7 @@
+using PolarityBreach.Audio;
 using PolarityBreach.Player;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 
 namespace PolarityBreach.PolaritySystem
@@ -12,6 +14,9 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private GameObject _chargedProjectilePrefab;
         [SerializeField] private ProjectilePool _normalProjectilePool;
         [SerializeField] private ProjectilePool _chargedProjectilePool;
+        
+        [SerializeField] private AudioClip shootSound;
+        [SerializeField] private AudioClip chargeSound;
         
         private bool _isCharging;
         private bool _chargeReady;
@@ -118,6 +123,7 @@ namespace PolarityBreach.PolaritySystem
                 _playerStats.attackSpeed,
                 _playerStats.attackDamage,
                 _playerStats.knockBackPower);
+            AudioHandler.Play3DSound(shootSound, transform.position);
         }
         
         private void ChargeShot()
