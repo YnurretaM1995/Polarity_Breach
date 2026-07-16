@@ -1514,6 +1514,60 @@ Transform:
   - {fileID: 30625202}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &412968183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8087243851140652706, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+  m_PrefabInstance: {fileID: 880002367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &412968185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412968183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b088f3df35e14048a3112c2f266e068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossWeakPoint
+  weakPointCollider: {fileID: 0}
+  maxHealth: 0
+  currentHealth: 0
+--- !u!114 &412968186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412968183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
+  _polarity: 1
+--- !u!65 &412968187
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412968183}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.05, z: 0.15}
+  m_Center: {x: 0, y: 0.015, z: 0.08}
 --- !u!4 &413574515 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5725000371507048362, guid: b2452a5c2cd649a4db9eebcd16f7b155, type: 3}
@@ -3116,6 +3170,114 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 976f499559b0f7d4f8c53995df0c1c54, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &839705815 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2451477676529088465, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+  m_PrefabInstance: {fileID: 880002367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &839705817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839705815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b088f3df35e14048a3112c2f266e068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossWeakPoint
+  weakPointCollider: {fileID: 0}
+  maxHealth: 0
+  currentHealth: 0
+--- !u!114 &839705818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839705815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
+  _polarity: 0
+--- !u!65 &839705819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839705815}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.05, z: 0.15}
+  m_Center: {x: 0, y: 0.015, z: 0.08}
+--- !u!1 &854909402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4583631837497560031, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+  m_PrefabInstance: {fileID: 880002367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &854909404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854909402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b088f3df35e14048a3112c2f266e068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossWeakPoint
+  weakPointCollider: {fileID: 0}
+  maxHealth: 0
+  currentHealth: 0
+--- !u!114 &854909405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854909402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
+  _polarity: 0
+--- !u!65 &854909406
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854909402}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.06, z: 0.15}
+  m_Center: {x: 0, y: 0.015, z: 0.08}
 --- !u!4 &861840931 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3452931867044665262, guid: 32467b8dc355cd04da356b17dbac4f29, type: 3}
@@ -3264,16 +3426,49 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1470209024630969529, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1015451778}
-    - targetCorrespondingSourceObject: {fileID: 1470209024630969529, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1015451777}
+      addedObject: {fileID: 1015451780}
     - targetCorrespondingSourceObject: {fileID: 1470209024630969529, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1015451776}
     - targetCorrespondingSourceObject: {fileID: 1470209024630969529, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1015451775}
+    - targetCorrespondingSourceObject: {fileID: 3254327029875858883, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2018716256}
+    - targetCorrespondingSourceObject: {fileID: 3254327029875858883, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2018716258}
+    - targetCorrespondingSourceObject: {fileID: 3254327029875858883, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2018716257}
+    - targetCorrespondingSourceObject: {fileID: 4583631837497560031, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 854909406}
+    - targetCorrespondingSourceObject: {fileID: 4583631837497560031, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 854909405}
+    - targetCorrespondingSourceObject: {fileID: 4583631837497560031, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 854909404}
+    - targetCorrespondingSourceObject: {fileID: 2451477676529088465, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 839705819}
+    - targetCorrespondingSourceObject: {fileID: 2451477676529088465, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 839705818}
+    - targetCorrespondingSourceObject: {fileID: 2451477676529088465, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 839705817}
+    - targetCorrespondingSourceObject: {fileID: 8087243851140652706, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 412968187}
+    - targetCorrespondingSourceObject: {fileID: 8087243851140652706, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 412968186}
+    - targetCorrespondingSourceObject: {fileID: 8087243851140652706, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 412968185}
   m_SourcePrefab: {fileID: 100100000, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
 --- !u!1001 &908981370
 PrefabInstance:
@@ -3939,6 +4134,7 @@ MonoBehaviour:
   projectilePool: {fileID: 1216575194}
   firePoint: {fileID: 1015451774}
   phaseData: {fileID: 11400000, guid: 28e3c82d2a93451db0297cb2372b1933, type: 2}
+  angleOffset: 10
 --- !u!114 &1015451776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3952,7 +4148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossPhaseController
   phaseOneAttack: {fileID: 1015451775}
---- !u!114 &1015451777
+--- !u!114 &1015451780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3961,23 +4157,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1015451772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
+  m_Script: {fileID: 11500000, guid: d4fedc4ab5a6da3438aad533fc2052c8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
-  _polarity: 1
---- !u!114 &1015451778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1015451772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 224383e52e2144a4fafa9a40369574d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyHealth
-  maxHealth: 500
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossHealth
+  maxHealth: 150
+  currentHealth: 0
+  weakPoints:
+  - {fileID: 2018716257}
+  - {fileID: 854909404}
+  - {fileID: 839705817}
+  - {fileID: 412968185}
 --- !u!4 &1047872060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5725000371507048362, guid: b2452a5c2cd649a4db9eebcd16f7b155, type: 3}
@@ -7533,6 +7722,14 @@ PrefabInstance:
       propertyPath: waveSpawner
       value: 
       objectReference: {fileID: 412696441}
+    - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: acceleration
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: deceleration
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 5093819952255073565, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: dashSpeed
       value: 30
@@ -8606,6 +8803,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1986555710}
   m_CullTransparentMesh: 1
+--- !u!1 &2018716254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3254327029875858883, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
+  m_PrefabInstance: {fileID: 880002367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2018716256
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018716254}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.1, y: 0.05, z: 0.15}
+  m_Center: {x: 0, y: 0.015, z: 0.08}
+--- !u!114 &2018716257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018716254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b088f3df35e14048a3112c2f266e068, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Boss.BossWeakPoint
+  weakPointCollider: {fileID: 0}
+  maxHealth: 0
+  currentHealth: 0
+--- !u!114 &2018716258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018716254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
+  _polarity: 1
 --- !u!1 &2018920360
 GameObject:
   m_ObjectHideFlags: 0
