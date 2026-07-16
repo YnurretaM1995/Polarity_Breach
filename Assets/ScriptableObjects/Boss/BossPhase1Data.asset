@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phaseName: Phase 1
   timeBetweenAttacks: 2
-  angleOffsetPerAttack: 0.5
+  attackStartAngleOffset: 35
   randomizePolarity: 1
   fallbackPolarity: 1
   instantBulletCount: 25

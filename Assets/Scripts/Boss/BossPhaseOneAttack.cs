@@ -11,10 +11,8 @@ namespace PolarityBreach.Boss
         [SerializeField] private Transform firePoint;
 
         [SerializeField] private BossPhaseData phaseData;
-
-        [SerializeField] private float angleOffset = 10f;
-
-        private float currentAngleOffset;
+        
+        private float attackStartAngle;
         private bool useInstantCircle = true;
         private Coroutine _phaseRoutine;
 
@@ -71,20 +69,20 @@ namespace PolarityBreach.Boss
         {
             for (int i = 0; i < phaseData.instantBulletCount; i++)
             {
-                float angle = ((360f / phaseData.instantBulletCount) * i) + phaseData.angleOffsetPerAttack;
+                float angle = attackStartAngle + 360f / phaseData.instantBulletCount * i;
                 Vector3 direction = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
 
                 FireProjectile(direction, polarity, phaseData.instantProjectileSpeed, phaseData.instantProjectileDamage);
             }
 
-            currentAngleOffset += 180f / phaseData.instantBulletCount;
+            attackStartAngle += phaseData.attackStartAngleOffset;
         }
 
         private IEnumerator FireCircleSequence(Polarity polarity)
         {
             for (int i = 0; i < phaseData.sequenceBulletCount; i++)
             {
-                float angle = ((360f / phaseData.sequenceBulletCount) * i) + phaseData.angleOffsetPerAttack;
+                float angle = attackStartAngle + ((360f / phaseData.sequenceBulletCount) * i);
                 Vector3 direction = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
 
                 FireProjectile(direction, polarity, phaseData.sequenceProjectileSpeed, phaseData.sequenceProjectileDamage);
@@ -92,7 +90,7 @@ namespace PolarityBreach.Boss
                 yield return new WaitForSeconds(phaseData.sequenceBulletDelay);
             }
 
-            currentAngleOffset += 180f / phaseData.sequenceBulletCount;
+            attackStartAngle += phaseData.attackStartAngleOffset;
         }
         
         private void FireProjectile(Vector3 direction, Polarity polarity, float projectileSpeed, float projectileDamage)
