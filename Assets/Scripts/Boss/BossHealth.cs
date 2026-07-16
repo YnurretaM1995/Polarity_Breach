@@ -61,6 +61,7 @@ namespace PolarityBreach.Boss
                 isDead = true;
                 OnDied?.Invoke();
                 Debug.Log("Boss Defeated");
+                gameObject.SetActive(false);
             }
         }
     }
