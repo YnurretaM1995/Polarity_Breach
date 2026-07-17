@@ -6,8 +6,6 @@ namespace PolarityBreach.PolaritySystem
     public class PolarityVisual : MonoBehaviour
     {
         [SerializeField] private Renderer[] _renderers;
-        
-        // 1. Changed from Color to Material references
         [SerializeField] private Material _blackMaterial;
         [SerializeField] private Material _whiteMaterial;
 
