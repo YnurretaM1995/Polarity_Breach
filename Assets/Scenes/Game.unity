@@ -1158,7 +1158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyProjectilePool
   projectilePrefab: {fileID: 1984103307443568, guid: ff8a6265275bbd2459cb490dccb31438, type: 3}
-  poolSize: 150
+  poolSize: 250
 --- !u!4 &245297110
 Transform:
   m_ObjectHideFlags: 0
@@ -6012,7 +6012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyProjectilePool
   projectilePrefab: {fileID: 1984103307443568, guid: 459a515db39472d43a1c12d5f0d9a303, type: 3}
-  poolSize: 100
+  poolSize: 250
 --- !u!4 &1216575195
 Transform:
   m_ObjectHideFlags: 0
@@ -8222,7 +8222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.ProjectilePool
   projectilePrefab: {fileID: 6054802736122291981, guid: dc6798321246b0a48b4d6a6a62f2a5bf, type: 3}
-  poolSize: 50
+  poolSize: 100
 --- !u!4 &1755451375
 Transform:
   m_ObjectHideFlags: 0

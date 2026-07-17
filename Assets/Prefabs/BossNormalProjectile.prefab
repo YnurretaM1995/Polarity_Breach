@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca74887a2ce54f943b433fe0e7cde8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  lifetime: 4
+  lifetime: 1.5
   _impactSound: {fileID: 8300000, guid: 6f9240006e5c0ac41ae98265261370ac, type: 3}
 --- !u!114 &-2874881251686744892
 MonoBehaviour:
