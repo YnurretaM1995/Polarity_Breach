@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7859028043917143100}
   - component: {fileID: 9179636194231710610}
   - component: {fileID: 8505041608961247992}
+  - component: {fileID: 5098090567516159172}
+  - component: {fileID: 2674504821814562289}
   m_Layer: 0
   m_Name: Plasma Sphere (1)
   m_TagString: Untagged
@@ -113,6 +115,36 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5098090567516159172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957592409648599577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed711fadd0f6f24eacfc3a27aa9ad95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityComponent
+  _polarity: 1
+--- !u!114 &2674504821814562289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957592409648599577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a197fc1db9f74e845bd6acbc96df73ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
+  _renderers: []
+  _blackMaterial: {fileID: 2100000, guid: 1019dec167ec4814495e43f051c0bf49, type: 2}
+  _whiteMaterial: {fileID: 2100000, guid: 8ca460ac53fe59c44b08b5b7cf2a3228, type: 2}
+  flashMaterial: {fileID: 0}
+  flashDuration: 0.04
 --- !u!1 &4990437007848177757
 GameObject:
   m_ObjectHideFlags: 0
