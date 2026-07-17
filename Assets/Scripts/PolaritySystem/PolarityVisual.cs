@@ -11,7 +11,7 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private Material _whiteMaterial;
 
         [Header("Flash Hit")] 
-        [SerializeField] private Color flashColor = new Color(255f, 170f, 0f, 255f);
+        [SerializeField] private Material flashMaterial;
         [SerializeField] private float flashDuration = 0.04f;
 
         private PolarityComponent _polarity;
@@ -44,6 +44,7 @@ namespace PolarityBreach.PolaritySystem
             if (_renderers == null) return;
             
             Material targetMaterial = polarity == Polarity.Black ? _blackMaterial : _whiteMaterial;
+            SetMaterial(targetMaterial);
 
             foreach (Renderer rend in _renderers)
             {
@@ -59,6 +60,25 @@ namespace PolarityBreach.PolaritySystem
                 rend.materials = newMats;
             }
         }
+        
+        private void SetMaterial(Material material)
+        {
+            if (material == null) return;
+
+            foreach (Renderer rend in _renderers)
+            {
+                if (rend == null) continue;
+
+                Material[] newMats = new Material[rend.sharedMaterials.Length];
+
+                for (int i = 0; i < newMats.Length; i++)
+                {
+                    newMats[i] = material;
+                }
+
+                rend.materials = newMats;
+            }
+        }
 
         public void FlashHit()
         {
@@ -67,10 +87,7 @@ namespace PolarityBreach.PolaritySystem
 
         private IEnumerator FlashHitRoutine()
         {
-            foreach (Renderer rend in _renderers)
-            {
-                rend.material.color = flashColor;
-            }
+            SetMaterial(flashMaterial);
             
             yield return new WaitForSeconds(flashDuration);
             
