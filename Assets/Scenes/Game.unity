@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 53516365}
   - component: {fileID: 53516364}
   - component: {fileID: 53516369}
+  - component: {fileID: 53516370}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PauseMenu
   pausePanel: {fileID: 1112048648}
   cheatPanel: {fileID: 1938681924}
-  cheatMenu: {fileID: 1817478973}
+  cheatMenu: {fileID: 53516370}
   playerStats: {fileID: 1817478972}
   playerHealth: {fileID: 1817478971}
   waveSpawner: {fileID: 412696441}
@@ -317,6 +318,26 @@ MonoBehaviour:
   fastPulse: 20
   hitFlash: 0.4
   hitFadeSpeed: 2
+--- !u!114 &53516370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53516363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03fe7ec06ef25e84cb8ecf8042bbd823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.CheatMenu
+  playerStats: {fileID: 1817478972}
+  waveSpawner: {fileID: 412696441}
+  player: {fileID: 1817478970}
+  bossRoomPoint: {fileID: 525857100}
+  bossObject: {fileID: 1015451772}
+  windowWidth: 300
+  windowHeight: 600
+  sliderSteps: 20
 --- !u!1 &73244193
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,7 +955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545.8334, y: -150.55556}
+  m_AnchoredPosition: {x: 546.09375, y: -150.55556}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &198140306
@@ -1260,7 +1281,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545.8334, y: -208.33334}
+  m_AnchoredPosition: {x: 546.09375, y: -208.33334}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &297680898
@@ -1441,7 +1462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545.8334, y: -92.77778}
+  m_AnchoredPosition: {x: 546.09375, y: -92.77778}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &333645445
@@ -1576,7 +1597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545.8334, y: -464.44443}
+  m_AnchoredPosition: {x: 546.09375, y: -464.44443}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377155463
@@ -2352,6 +2373,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522763565}
   m_CullTransparentMesh: 1
+--- !u!1 &525857099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 525857100}
+  m_Layer: 0
+  m_Name: BossLevelDebugCheat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &525857100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525857099}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 112.4, y: 0, z: -5.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &536425197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3897,7 +3949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470209024630969529, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2246429786413174275, guid: 5989422cb4c503d4f947d7705f01df64, type: 3}
       propertyPath: m_LocalScale.x
@@ -5007,7 +5059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545.8334, y: -532.2222}
+  m_AnchoredPosition: {x: 546.09375, y: -532.2222}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1050850813
@@ -5637,7 +5689,7 @@ RectTransform:
   m_Father: {fileID: 356999501}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6969,7 +7021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545.8334, y: -266.1111}
+  m_AnchoredPosition: {x: 546.09375, y: -266.1111}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455887346
@@ -7355,7 +7407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545.8334, y: -396.66666}
+  m_AnchoredPosition: {x: 546.09375, y: -396.66666}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1573785959
@@ -7558,7 +7610,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545.8334, y: -328.8889}
+  m_AnchoredPosition: {x: 546.09375, y: -328.8889}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604971232
@@ -8737,6 +8789,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 53516369}
     - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1817478970}
+    - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: bossObject
+      value: 
+      objectReference: {fileID: 1015451772}
+    - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 1817478972}
@@ -8744,6 +8808,14 @@ PrefabInstance:
       propertyPath: waveSpawner
       value: 
       objectReference: {fileID: 412696441}
+    - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: level1Parent
+      value: 
+      objectReference: {fileID: 816700532}
+    - target: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: bossRoomPoint
+      value: 
+      objectReference: {fileID: 525857100}
     - target: {fileID: 888351089162473407, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: _blackMaterial
       value: 
@@ -8759,6 +8831,10 @@ PrefabInstance:
     - target: {fileID: 1539293552844303146, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: deceleration
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741139155744409653, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5093819952255073565, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: dashSpeed
@@ -8854,7 +8930,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 112.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8862,7 +8938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.03
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8870,15 +8946,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8961,17 +9037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c31e96ce11c0864c94d666641fb61e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerStatsData
---- !u!114 &1817478973 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -2351572942621127658, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
-  m_PrefabInstance: {fileID: 1817478967}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1817478968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fe7ec06ef25e84cb8ecf8042bbd823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.CheatMenu
 --- !u!82 &1817478985
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9716,7 +9781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 545.8334, y: -35}
+  m_AnchoredPosition: {x: 546.09375, y: -35}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1938460993
@@ -10558,6 +10623,7 @@ SceneRoots:
   - {fileID: 1802182467}
   - {fileID: 1003845658}
   - {fileID: 702068436}
+  - {fileID: 525857100}
   - {fileID: 1817478967}
   - {fileID: 412696442}
   - {fileID: 1951798310}

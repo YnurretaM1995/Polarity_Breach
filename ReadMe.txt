@@ -30,7 +30,7 @@ MENUS
   ACTION              KEYBOARD & MOUSE          XBOX CONTROLLER
   ------------------  ------------------------  --------------------
   Pause / Resume      Esc                       Start
-  Cheat Menu          F1                        
+  Cheat Menu          F1                        Select
 
   The Pause Menu also has a Cheat Menu button that toggles
   the debug overlay.
