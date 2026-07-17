@@ -8,11 +8,11 @@ namespace PolarityBreach.Boss
     {
         [SerializeField] private BossPhaseOneAttack phaseOneAttack;
 
-        private EnemyHealth health;
+        private BossHealth health;
 
         private void Awake()
         {
-            health = GetComponent<EnemyHealth>();
+            health = GetComponent<BossHealth>();
         }
 
         private void Start()

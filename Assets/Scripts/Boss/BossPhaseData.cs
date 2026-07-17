@@ -11,7 +11,7 @@ namespace PolarityBreach.Boss
 
         [Header("Shared Attack Settings")]
         public float timeBetweenAttacks = 2f;
-        public float angleOffsetPerAttack = 0.5f;
+        public float attackStartAngleOffset = 35f;
         public bool randomizePolarity = true;
         public Polarity fallbackPolarity = Polarity.White;
         

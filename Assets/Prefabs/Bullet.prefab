@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.27108, y: 1.83504, z: -0.26688}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
   _renderers: []
-  _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
-  _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
+  _blackMaterial: {fileID: 2100000, guid: cf5a4c6025887f74a8a495cbcf3fad05, type: 2}
+  _whiteMaterial: {fileID: 2100000, guid: f769f7e8a7155ec46b9ae207f265ab40, type: 2}
 --- !u!114 &6054802736122291981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,11 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a1afc79b3c9eec4eaf71f6eb8ca88f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.TestProjectile
-  _speed: 90
-  _damage: 10
   _lifeTime: 2
-  _knockbackForce: 10
   _disapearOnHit: 1
+  _impactEffect: {fileID: 1574572644529341202, guid: 73d4bc9b4d1cfbc40b803df0bddcb5f5, type: 3}
 --- !u!54 &4789453827344001996
 Rigidbody:
   m_ObjectHideFlags: 0
