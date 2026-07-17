@@ -4,11 +4,11 @@ namespace PolarityBreach.Feedback
 {
     public static class FeedbackHandler
     {
-        public static void SpawnParticles(GameObject prefab, Vector3 position)
+        public static void SpawnParticles(GameObject prefab, Vector3 position, Vector3 impactNormal)
         {
-            GameObject effect = Object.Instantiate(prefab, position, Quaternion.identity);
+            Quaternion rotation = Quaternion.LookRotation(impactNormal);
+            GameObject effect = Object.Instantiate(prefab, position, rotation);
             Object.Destroy(effect, 2f);
         }
-        
     }
 }

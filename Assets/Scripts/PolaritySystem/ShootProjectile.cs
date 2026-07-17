@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using PolarityBreach.Feedback;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private float _lifeTime = 3f;
         [SerializeField] private bool _disapearOnHit = true;
         [SerializeField] private GameObject _impactEffect;
+        [SerializeField] private AudioClip _impactSound;
         
         private float _speed;
         private float _damage;
@@ -40,7 +42,9 @@ namespace PolarityBreach.PolaritySystem
             if (hit)
             {
                 Rigidbody rb = other.GetComponent<Rigidbody>();
-                FeedbackHandler.SpawnParticles(_impactEffect, transform.position);
+                Vector3 impactDirection = transform.forward;
+                FeedbackHandler.SpawnParticles(_impactEffect, transform.position,impactDirection);
+                AudioHandler.Play3DSound(_impactSound, transform.position);
 
                 if (rb != null)
                 {
