@@ -54,6 +54,8 @@ namespace PolarityBreach.PolaritySystem
                     
                     rb.AddForce(knockbackDirection * _knockbackForce, ForceMode.Impulse);
                 }
+                
+                other.GetComponentInParent<PolarityVisual>()?.FlashHit();
 
                 if (_disapearOnHit)
                 {
