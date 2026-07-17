@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace PolarityBreach.PolaritySystem
 {
@@ -6,8 +7,12 @@ namespace PolarityBreach.PolaritySystem
     public class PolarityVisual : MonoBehaviour
     {
         [SerializeField] private Renderer[] _renderers;
-        [SerializeField] private Color _blackColor = new Color(0.12f, 0.12f, 0.16f);
-        [SerializeField] private Color _whiteColor = new Color(0.95f, 0.95f, 0.98f);
+        [SerializeField] private Material _blackMaterial;
+        [SerializeField] private Material _whiteMaterial;
+
+        [Header("Flash Hit")] 
+        [SerializeField] private Material flashMaterial;
+        [SerializeField] private float flashDuration = 0.04f;
 
         private PolarityComponent _polarity;
 
@@ -37,23 +42,56 @@ namespace PolarityBreach.PolaritySystem
         private void Apply(Polarity polarity)
         {
             if (_renderers == null) return;
-            Color nuevo = polarity == Polarity.Black ? _blackColor : _whiteColor;
+            
+            Material targetMaterial = polarity == Polarity.Black ? _blackMaterial : _whiteMaterial;
+            SetMaterial(targetMaterial);
+
+            foreach (Renderer rend in _renderers)
+            {
+                if (rend == null) continue;
+                
+                Material[] newMats = new Material[rend.sharedMaterials.Length];
+                
+                for (int i = 0; i < newMats.Length; i++)
+                {
+                    newMats[i] = targetMaterial;
+                }
+                
+                rend.materials = newMats;
+            }
+        }
+        
+        private void SetMaterial(Material material)
+        {
+            if (material == null) return;
 
             foreach (Renderer rend in _renderers)
             {
                 if (rend == null) continue;
 
-                Material[] mats = rend.materials;
-                for (int i = 0; i < mats.Length; i++)
-                {
-                    Material m = mats[i];
+                Material[] newMats = new Material[rend.sharedMaterials.Length];
 
-                    if (m.HasProperty("_TintColor")) m.SetColor("_TintColor", nuevo);
-                    if (m.HasProperty("_TintAmount")) m.SetFloat("_TintAmount", 0.7f);
-                    if (m.HasProperty("_BaseColor")) m.SetColor("_BaseColor", nuevo);
-                    if (m.HasProperty("_Color")) m.SetColor("_Color", nuevo);
+                for (int i = 0; i < newMats.Length; i++)
+                {
+                    newMats[i] = material;
                 }
+
+                rend.materials = newMats;
             }
+        }
+
+        public void FlashHit()
+        {
+            StartCoroutine(FlashHitRoutine());
+        }
+
+        private IEnumerator FlashHitRoutine()
+        {
+            SetMaterial(flashMaterial);
+            
+            yield return new WaitForSeconds(flashDuration);
+            
+            Apply(_polarity.CurrentPolarity);
         }
     }
 }

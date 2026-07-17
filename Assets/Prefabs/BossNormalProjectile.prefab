@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   lifetime: 4
+  _impactSound: {fileID: 8300000, guid: 6f9240006e5c0ac41ae98265261370ac, type: 3}
 --- !u!114 &-2874881251686744892
 MonoBehaviour:
   m_ObjectHideFlags: 0
