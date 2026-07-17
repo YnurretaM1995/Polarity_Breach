@@ -1759,7 +1759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &412696441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4860,12 +4860,55 @@ MonoBehaviour:
   - {fileID: 1409927318}
   - {fileID: 567375335}
   waves:
+  - groups: []
   - groups:
     - enemyCount: 2
       pattern: 0
       spacing: 4
       polarity: 0
     - enemyCount: 2
+      pattern: 0
+      spacing: 4
+      polarity: 1
+    - enemyCount: 2
+      pattern: 0
+      spacing: 4
+      polarity: 0
+    - enemyCount: 2
+      pattern: 0
+      spacing: 4
+      polarity: 1
+  - groups:
+    - enemyCount: 3
+      pattern: 0
+      spacing: 4
+      polarity: 0
+    - enemyCount: 3
+      pattern: 0
+      spacing: 4
+      polarity: 1
+    - enemyCount: 3
+      pattern: 0
+      spacing: 4
+      polarity: 0
+    - enemyCount: 3
+      pattern: 0
+      spacing: 4
+      polarity: 1
+  - groups:
+    - enemyCount: 4
+      pattern: 0
+      spacing: 4
+      polarity: 0
+    - enemyCount: 4
+      pattern: 0
+      spacing: 4
+      polarity: 1
+    - enemyCount: 4
+      pattern: 0
+      spacing: 4
+      polarity: 0
+    - enemyCount: 4
       pattern: 0
       spacing: 4
       polarity: 1
@@ -8811,7 +8854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 112.4
       objectReference: {fileID: 0}
     - target: {fileID: 6916354072913583291, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: m_LocalPosition.y
