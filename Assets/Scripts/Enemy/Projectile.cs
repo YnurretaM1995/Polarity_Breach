@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using PolarityBreach.Player;
 using PolarityBreach.PolaritySystem;
 using PolarityBreach.PolaritySystem.Interfaces;
@@ -9,6 +10,7 @@ namespace PolarityBreach.Enemy
     public class Projectile : MonoBehaviour
     {
         [SerializeField] private float lifetime = 4f;
+        [SerializeField] private AudioClip _impactSound;
 
         private Rigidbody rb;
         private float speed;
@@ -50,7 +52,7 @@ namespace PolarityBreach.Enemy
             
             if (hit)
             {
-                
+                AudioHandler.Play3DSound(_impactSound, transform.position);
                 Deactivate();
                 return;
             }

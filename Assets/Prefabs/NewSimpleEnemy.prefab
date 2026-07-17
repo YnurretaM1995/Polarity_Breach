@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c014be9b54c514c86ce622a14c2386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  projectilePrefab: {fileID: 979850657213972872, guid: ff8a6265275bbd2459cb490dccb31438, type: 3}
+  projectilePrefab: {fileID: 5025843939284189824, guid: d0678717a2661ba4aa659be2108e020d, type: 3}
   firePoint: {fileID: 784078283314235144}
   projectilePool: {fileID: 0}
   fireRate: 0.6
@@ -454,7 +454,7 @@ MonoBehaviour:
   playerTag: Player
   knockbackForce: 6
   enemyPushback: 1.5
-  damageSound: {fileID: 8300000, guid: 28d3018e225a0ff4ba8a7dc236409713, type: 3}
+  damageSound: {fileID: 8300000, guid: 6f9240006e5c0ac41ae98265261370ac, type: 3}
 --- !u!114 &-6071555057613033898
 MonoBehaviour:
   m_ObjectHideFlags: 0
