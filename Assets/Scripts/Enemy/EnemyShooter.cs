@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using PolarityBreach.PolaritySystem;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ namespace PolarityBreach.Enemy
         [SerializeField] private float projectileSpeed = 12f;
         [SerializeField] private float maxFireRange = 12f;
         [SerializeField] private int damage = 10;
+
+        [SerializeField] private AudioClip shootSound;
 
         private EnemyPursuitAI pursuitAI;
         private float fireCooldown;
@@ -88,6 +91,7 @@ namespace PolarityBreach.Enemy
                         Physics.IgnoreCollision(projCollider, ownCollider);
                 }
             }
+            AudioHandler.Play3DSound(shootSound, transform.position);
 
             proj.Launch(dir, projectileSpeed, damage);
         }

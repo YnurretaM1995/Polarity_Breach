@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
@@ -11,6 +12,8 @@ public class EnemyContactDamage : MonoBehaviour
     [Header("Knockback")]
     [SerializeField] private float knockbackForce = 6f;
     [SerializeField] private float enemyPushback = 1.5f;
+    
+    [SerializeField] private AudioClip damageSound;
 
     private float cooldownTimer;
     private NavMeshAgentPusher pusher;
@@ -55,7 +58,7 @@ public class EnemyContactDamage : MonoBehaviour
         {
             playerRb.AddForce(awayFromEnemy * knockbackForce, ForceMode.Impulse);
         }
-        
+        AudioHandler.Play3DSound(damageSound, transform.position);
         pusher.PushBack(-awayFromEnemy, enemyPushback);
     }
 }

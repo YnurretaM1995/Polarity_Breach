@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using PolarityBreach.PolaritySystem;
 using UnityEngine;
-
 
 namespace PolarityBreach.Enemy
 {
@@ -31,6 +31,8 @@ namespace PolarityBreach.Enemy
 
     public class EnemyWaveSpawner : MonoBehaviour
     {
+        public event Action OnRoomCleared;
+        
         [Header("References")] [SerializeField]
         private EnemyPool enemyPool;
 
@@ -70,6 +72,7 @@ namespace PolarityBreach.Enemy
             }
 
             Debug.Log("Room cleared!");
+            OnRoomCleared?.Invoke();
         }
 
         private IEnumerator SpawnWave(EnemyWave wave)
@@ -105,7 +108,7 @@ namespace PolarityBreach.Enemy
                 return null;
 
 
-            int randomIndex = Random.Range(0, possibleSpawnPoints.Length);
+            int randomIndex = UnityEngine.Random.Range(0, possibleSpawnPoints.Length);
             return possibleSpawnPoints[randomIndex];
         }
 
@@ -145,7 +148,7 @@ namespace PolarityBreach.Enemy
 
             for (int i = 0; i < enemyCount; i++)
             {
-                Vector2 randomCircle = Random.insideUnitCircle * clusterRadius;
+                Vector2 randomCircle = UnityEngine.Random.insideUnitCircle * clusterRadius;
                 offsets[i] = new Vector3(randomCircle.x, 0f, randomCircle.y);
             }
 
