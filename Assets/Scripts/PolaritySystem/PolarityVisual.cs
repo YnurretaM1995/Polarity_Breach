@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace PolarityBreach.PolaritySystem
 {
@@ -8,6 +9,10 @@ namespace PolarityBreach.PolaritySystem
         [SerializeField] private Renderer[] _renderers;
         [SerializeField] private Color _blackColor = new Color(0.12f, 0.12f, 0.16f);
         [SerializeField] private Color _whiteColor = new Color(0.95f, 0.95f, 0.98f);
+
+        [Header("Flash Hit")] 
+        [SerializeField] private Color flashColor = new Color(255f, 170f, 0f, 255f);
+        [SerializeField] private float flashDuration = 0.04f;
 
         private PolarityComponent _polarity;
 
@@ -54,6 +59,23 @@ namespace PolarityBreach.PolaritySystem
                     if (m.HasProperty("_Color")) m.SetColor("_Color", nuevo);
                 }
             }
+        }
+
+        public void FlashHit()
+        {
+            StartCoroutine(FlashHitRoutine());
+        }
+
+        private IEnumerator FlashHitRoutine()
+        {
+            foreach (Renderer rend in _renderers)
+            {
+                rend.material.color = flashColor;
+            }
+            
+            yield return new WaitForSeconds(flashDuration);
+            
+            Apply(_polarity.CurrentPolarity);
         }
     }
 }

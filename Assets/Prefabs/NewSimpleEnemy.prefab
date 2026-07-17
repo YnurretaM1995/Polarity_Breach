@@ -467,6 +467,8 @@ MonoBehaviour:
   _renderers: []
   _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
   _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
+  flashColor: {r: 1, g: 0.6820623, b: 0, a: 1}
+  flashDuration: 0.05
 --- !u!114 &933150920283731836
 MonoBehaviour:
   m_ObjectHideFlags: 0
