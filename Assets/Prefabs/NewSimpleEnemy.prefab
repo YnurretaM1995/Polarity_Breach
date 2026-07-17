@@ -432,8 +432,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 979850657213972872, guid: ff8a6265275bbd2459cb490dccb31438, type: 3}
   firePoint: {fileID: 784078283314235144}
   projectilePool: {fileID: 0}
-  fireRate: 1.5
-  projectileSpeed: 12
+  fireRate: 0.6
+  projectileSpeed: 10
   maxFireRange: 12
   damage: 10
   shootSound: {fileID: 8300000, guid: f55671d441e5e234ea9e67aa84393daf, type: 3}
