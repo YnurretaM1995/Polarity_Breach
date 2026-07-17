@@ -8,7 +8,6 @@ namespace PolarityBreach.Enemy
     public class EnemyShooter : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private GameObject projectilePrefab;
         [SerializeField] private Transform firePoint;
         [SerializeField] private EnemyProjectilePool projectilePool;
 
