@@ -5,7 +5,9 @@ namespace PolarityBreach
 {
     public class Door : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private EnemyWaveSpawner waveSpawner;
+        [SerializeField] private Transform bossRoomSpawnPoint;
 
         private bool isOpen = false;
 
@@ -27,9 +29,10 @@ namespace PolarityBreach
 
             isOpen = true;
 
+            // Hide the door
             GetComponent<MeshRenderer>().enabled = false;
 
-            // Disable blocking collision
+            // Allow player to walk through
             GetComponent<Collider>().enabled = false;
         }
 
@@ -40,8 +43,8 @@ namespace PolarityBreach
 
             if (other.CompareTag("Player"))
             {
-                Debug.Log("Player passed through the door!");
-                // load next room / level
+                Debug.Log("Entering boss room!");
+                other.transform.position = bossRoomSpawnPoint.position;
             }
         }
     }
