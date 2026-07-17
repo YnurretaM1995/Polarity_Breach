@@ -454,7 +454,7 @@ MonoBehaviour:
   playerTag: Player
   knockbackForce: 6
   enemyPushback: 1.5
-  damageSound: {fileID: 8300000, guid: 28d3018e225a0ff4ba8a7dc236409713, type: 3}
+  damageSound: {fileID: 8300000, guid: 6f9240006e5c0ac41ae98265261370ac, type: 3}
 --- !u!114 &-6071555057613033898
 MonoBehaviour:
   m_ObjectHideFlags: 0
