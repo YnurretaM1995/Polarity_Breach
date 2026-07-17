@@ -17,6 +17,7 @@ namespace PolarityBreach.Boss
 
         public event Action OnDied;
         public event Action<float> OnHealthPercentChanged;
+        public event Action OnWeakPointDestroyed;
 
         public float CurrentHealth => currentHealth;
         public float MaxHealth => maxHealth;
@@ -62,6 +63,16 @@ namespace PolarityBreach.Boss
                 OnDied?.Invoke();
                 Debug.Log("Boss Defeated");
                 gameObject.SetActive(false);
+            }
+        }
+        
+        public void WeakPointDestroyed()
+        {
+            RefreshHealth();
+
+            if (!isDead)
+            {
+                OnWeakPointDestroyed?.Invoke();
             }
         }
     }

@@ -65,6 +65,8 @@ namespace PolarityBreach.Boss
                 weakPointCollider.enabled = false;
             }
 
+            bossHealth.WeakPointDestroyed();
+            
             Debug.Log(gameObject.name + " weak point destroyed.");
         }
     }

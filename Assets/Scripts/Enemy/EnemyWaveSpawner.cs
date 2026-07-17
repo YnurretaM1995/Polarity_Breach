@@ -41,6 +41,7 @@ namespace PolarityBreach.Enemy
         [Header("Wave Settings")] [SerializeField]
         private EnemyWave[] waves;
 
+        [SerializeField] private bool autoStart = true;
         [SerializeField] private float timeBetweenSpawns = 0.3f;
         [SerializeField] private float timeBetweenWaves = 3f;
         [SerializeField] private float enemySpawnHeight = 0.5f;
@@ -53,7 +54,10 @@ namespace PolarityBreach.Enemy
 
         private void Start()
         {
-            StartCoroutine(RunWaves());
+            if (autoStart)
+            {
+                StartCoroutine(RunWaves());
+            }
         }
 
         private IEnumerator RunWaves()
@@ -168,6 +172,16 @@ namespace PolarityBreach.Enemy
             }
 
             return offsets;
+        }
+        
+        public void SpawnWaveByIndex(int waveIndex)
+        {
+            if (waveIndex < 0 || waveIndex >= waves.Length)
+            {
+                return;
+            }
+
+            StartCoroutine(SpawnWave(waves[waveIndex]));
         }
 
         public void EnemyDied(Enemy enemy)
