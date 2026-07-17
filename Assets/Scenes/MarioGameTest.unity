@@ -892,7 +892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad55362146447f45a179fccf3610c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyProjectilePool
-  projectilePrefab: {fileID: 1984103307443568, guid: ff8a6265275bbd2459cb490dccb31438, type: 3}
+  projectilePrefab: {fileID: 8877138284561549761, guid: b371d9032850afc41a1abc7c2a875915, type: 3}
   poolSize: 150
 --- !u!4 &245297110
 Transform:
@@ -3939,7 +3939,6 @@ MonoBehaviour:
   projectilePool: {fileID: 1216575194}
   firePoint: {fileID: 1015451774}
   phaseData: {fileID: 11400000, guid: 28e3c82d2a93451db0297cb2372b1933, type: 2}
-  angleOffset: 10
 --- !u!114 &1015451776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4897,7 +4896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad55362146447f45a179fccf3610c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyProjectilePool
-  projectilePrefab: {fileID: 1984103307443568, guid: 459a515db39472d43a1c12d5f0d9a303, type: 3}
+  projectilePrefab: {fileID: 1984103307443568, guid: 2809ff7a9fa8b3b4da5544adc45baf0b, type: 3}
   poolSize: 100
 --- !u!4 &1216575195
 Transform:
@@ -7534,6 +7533,14 @@ PrefabInstance:
       propertyPath: waveSpawner
       value: 
       objectReference: {fileID: 412696441}
+    - target: {fileID: 888351089162473407, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: _blackMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: cf5a4c6025887f74a8a495cbcf3fad05, type: 2}
+    - target: {fileID: 888351089162473407, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
+      propertyPath: _whiteMaterial
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: af5e774ddd9965143b7c8fe968e91999, type: 3}
     - target: {fileID: 5093819952255073565, guid: 9658baaa0a7a7e748b35056f3a191df1, type: 3}
       propertyPath: dashSpeed
       value: 30
