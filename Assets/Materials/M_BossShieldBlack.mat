@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_BlackColorMat
-  m_Shader: {fileID: -6465566751694194690, guid: 058ab3c8c99075e4f966a9e92c046558, type: 3}
+  m_Name: M_BossShieldBlack
+  m_Shader: {fileID: -6465566751694194690, guid: 43f2364486ff12d4aa5dc5cd456e77b3, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -83,7 +83,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AddPrecomputedVelocity: 0
-    - _Alpha: 0.35
+    - _Alpha: 0.5
     - _AlphaClip: 0
     - _AlphaToMask: 0
     - _Base_Power: 0
@@ -104,7 +104,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Outline_Power: 2
+    - _Outline_Power: 2.25
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
