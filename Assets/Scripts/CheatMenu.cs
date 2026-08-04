@@ -225,6 +225,11 @@ namespace PolarityBreach
 
         private void GoToBossFight()
         {
+            if (waveSpawner != null)
+            {
+                waveSpawner.DebugStopAndClearEnemies();
+            }
+
             if (player != null && bossRoomPoint != null)
                 StartCoroutine(TeleportRoutine());
             else if (bossObject != null)

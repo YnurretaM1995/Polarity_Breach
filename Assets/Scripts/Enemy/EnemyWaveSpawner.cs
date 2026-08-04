@@ -51,6 +51,7 @@ namespace PolarityBreach.Enemy
 
         private System.Collections.Generic.List<Enemy> activeEnemies = new System.Collections.Generic.List<Enemy>();
         private int aliveEnemies;
+        public int AliveEnemies => aliveEnemies;
 
         private void Start()
         {
@@ -194,6 +195,14 @@ namespace PolarityBreach.Enemy
         public void DebugCompleteCurrentWave()
         {
             enemyPool.KillAllActiveEnemies();
+        }
+
+        public void DebugStopAndClearEnemies()
+        {
+            StopAllCoroutines();
+            enemyPool.KillAllActiveEnemies();
+            aliveEnemies = 0;
+            activeEnemies.Clear();
         }
 
         public void SkipCurrentWave()
