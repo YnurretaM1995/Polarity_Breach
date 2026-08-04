@@ -44,6 +44,7 @@ namespace PolarityBreach.Boss
         public void TakeDamage(float amount)
         {
             if (isDestroyed) return;
+            if (bossHealth.IsShielded) return;
 
             currentHealth -= amount;
             currentHealth = Mathf.Max(currentHealth, 0f);

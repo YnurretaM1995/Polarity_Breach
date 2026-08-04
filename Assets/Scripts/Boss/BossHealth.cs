@@ -12,6 +12,9 @@ namespace PolarityBreach.Boss
 
         [Header("Boss WeakPoints")] [SerializeField]
         private BossWeakPoint[] weakPoints;
+        
+        [Header("Boss Shield")]
+        public bool IsShielded {get; private set;}
 
         private bool isDead;
 
@@ -74,6 +77,11 @@ namespace PolarityBreach.Boss
             {
                 OnWeakPointDestroyed?.Invoke();
             }
+        }
+
+        public void SetShielded(bool shielded)
+        {
+            IsShielded = shielded;
         }
     }
 }

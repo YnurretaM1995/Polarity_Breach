@@ -18,6 +18,8 @@ namespace PolarityBreach.Boss
 
         public void StartPhase()
         {
+            if (_phaseRoutine != null) return;
+            
             if (phaseData == null)
             {
                 return;
@@ -36,6 +38,7 @@ namespace PolarityBreach.Boss
             if (_phaseRoutine != null)
             {
                 StopCoroutine(_phaseRoutine);
+                _phaseRoutine = null;
             }
         }
 
