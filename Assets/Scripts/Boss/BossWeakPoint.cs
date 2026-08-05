@@ -19,6 +19,7 @@ namespace PolarityBreach.Boss
         public float CurrentHealth => currentHealth;
         public float MaxHealth => maxHealth;
         public bool IsDestroyed => isDestroyed;
+        public bool CanTakeDamage => !isDestroyed && bossHealth != null && !bossHealth.IsShielded;
 
         void Awake()
         {
