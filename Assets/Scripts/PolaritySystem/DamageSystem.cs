@@ -14,8 +14,8 @@ namespace PolarityBreach.PolaritySystem
         {
             if (source == null || target == null) return false;
 
-            IPolarizable targetPolarity = target.GetComponent<IPolarizable>();
-            IDamageable damageable = target.GetComponent<IDamageable>();
+            IPolarizable targetPolarity = target.GetComponent<IPolarizable>() ?? target.GetComponentInParent<IPolarizable>();
+            IDamageable damageable = target.GetComponent<IDamageable>() ?? target.GetComponentInParent<IDamageable>();
             if (targetPolarity == null || damageable == null) return false;
 
             return TryApplyDamage(source.CurrentPolarity, targetPolarity, damageable, amount);

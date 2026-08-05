@@ -1,4 +1,5 @@
 using PolarityBreach.Audio;
+using PolarityBreach.Boss;
 using PolarityBreach.Feedback;
 using UnityEngine;
 
@@ -38,6 +39,28 @@ namespace PolarityBreach.PolaritySystem
 
         private void OnTriggerEnter(Collider other)
         {
+            BossShield bossShield = other.GetComponentInParent<BossShield>();
+            if (bossShield != null && bossShield.IsInvulnerable)
+            {
+                if (_disapearOnHit)
+                {
+                    gameObject.SetActive(false);
+                }
+
+                return;
+            }
+
+            BossWeakPoint bossWeakPoint = other.GetComponentInParent<BossWeakPoint>();
+            if (bossWeakPoint != null && !bossWeakPoint.CanTakeDamage)
+            {
+                if (_disapearOnHit)
+                {
+                    gameObject.SetActive(false);
+                }
+
+                return;
+            }
+
             bool hit = DamageSystem.TryApplyDamage(_polarity, other.gameObject, _damage);
             if (hit)
             {
