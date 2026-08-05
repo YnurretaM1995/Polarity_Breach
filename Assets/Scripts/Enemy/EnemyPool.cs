@@ -9,6 +9,25 @@ namespace PolarityBreach.Enemy
         [SerializeField] private int poolSize = 20;
 
         private List<Enemy> enemies = new List<Enemy>();
+        public bool HasActiveEnemies => ActiveEnemyCount > 0;
+
+        public int ActiveEnemyCount
+        {
+            get
+            {
+                int count = 0;
+
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    if (enemies[i] != null && enemies[i].gameObject.activeInHierarchy)
+                    {
+                        count++;
+                    }
+                }
+
+                return count;
+            }
+        }
 
         private void Awake()
         {

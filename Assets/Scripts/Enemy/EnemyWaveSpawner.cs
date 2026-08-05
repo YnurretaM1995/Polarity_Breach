@@ -52,6 +52,7 @@ namespace PolarityBreach.Enemy
         private System.Collections.Generic.List<Enemy> activeEnemies = new System.Collections.Generic.List<Enemy>();
         private int aliveEnemies;
         public int AliveEnemies => aliveEnemies;
+        public EnemyPool Pool => enemyPool;
 
         private void Start()
         {
