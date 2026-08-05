@@ -8,6 +8,7 @@ namespace PolarityBreach.Boss
     public class BossShield : MonoBehaviour, IDamageable
     {
         [SerializeField] private float maxHealth = 100f;
+        [SerializeField] private EnemyPool enemyPool;
         [SerializeField] private EnemyWaveSpawner enemyWaveSpawner;
         
         private float currentHealth;
@@ -15,15 +16,22 @@ namespace PolarityBreach.Boss
         public event Action OnShieldDestroyed;
         
         public bool IsActive => gameObject.activeInHierarchy;
+        public bool IsInvulnerable => HasEnemiesAlive();
+
+        private void Awake()
+        {
+            FindEnemyPoolIfMissing();
+        }
 
         void OnEnable()
         {
             currentHealth = maxHealth;
+            FindEnemyPoolIfMissing();
         }
         
         public void TakeDamage(float amount)
         {
-            if (enemyWaveSpawner != null && enemyWaveSpawner.AliveEnemies > 0)
+            if (HasEnemiesAlive())
             {
                 Debug.Log("Shield is invulnerable while enemies are alive.");
                 return;
@@ -36,6 +44,38 @@ namespace PolarityBreach.Boss
             {
                 OnShieldDestroyed?.Invoke();
                 gameObject.SetActive(false);
+            }
+        }
+
+        private bool HasEnemiesAlive()
+        {
+            FindEnemyPoolIfMissing();
+
+            if (enemyPool != null)
+            {
+                return enemyPool.HasActiveEnemies;
+            }
+
+            if (enemyWaveSpawner != null)
+            {
+                return enemyWaveSpawner.AliveEnemies > 0;
+            }
+
+            return false;
+        }
+
+        private void FindEnemyPoolIfMissing()
+        {
+            if (enemyPool != null) return;
+
+            if (enemyWaveSpawner != null)
+            {
+                enemyPool = enemyWaveSpawner.Pool;
+            }
+
+            if (enemyPool == null)
+            {
+                enemyPool = FindFirstObjectByType<EnemyPool>();
             }
         }
     }
