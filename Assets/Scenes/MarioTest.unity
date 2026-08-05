@@ -301,10 +301,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyWaveSpawner
   enemyPool: {fileID: 204082858}
-  enemiesPerWave: 05000000080000000c000000
+  possibleSpawnPoints: []
+  waves: []
+  autoStart: 1
   timeBetweenSpawns: 0.3
   timeBetweenWaves: 3
-  spawnAreaRadius: 20
+  enemySpawnHeight: 0.5
   clusterRadius: 3
 --- !u!4 &204082860
 Transform:
@@ -479,6 +481,7 @@ MonoBehaviour:
   xRotation: 70
   yRotation: 0
   zRotation: 0
+  shakeDecay: 5
 --- !u!1 &371747517
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +721,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PauseMenu
   pausePanel: {fileID: 1478467984}
+  cheatPanel: {fileID: 0}
+  cheatMenu: {fileID: 0}
+  playerStats: {fileID: 0}
+  playerHealth: {fileID: 0}
+  waveSpawner: {fileID: 0}
+  player: {fileID: 0}
+  bossRoomPoint: {fileID: 0}
 --- !u!114 &561997033
 MonoBehaviour:
   m_ObjectHideFlags: 0
