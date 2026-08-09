@@ -1,55 +1,72 @@
 using System;
+using PolarityBreach.Feedback;
 using UnityEngine;
 using PolarityBreach.PolaritySystem.Interfaces;
 
 namespace PolarityBreach.Player
 {
+    [RequireComponent(typeof(PlayerStatsData))]
     public class PlayerHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] private BloodOverlay bloodOverlay;
         [SerializeField] private CameraControlScript cameraShake;
-        
-        private PlayerStatsData playerStats;
-        private float currentHealth;
-        public bool GodMode { get; set; } = false;
 
+        private PlayerStatsData playerStats;
+        
+        public float CurrentHealth { get; private set; }
+        public float MaxHealth => playerStats != null ? playerStats.maxHealth : 100f;
+        public bool IsDead => CurrentHealth <= 0f;
+        
+        public bool GodMode { get; set; } = false;
+        private bool IsInvincible => GodMode || (playerStats != null && playerStats.godMode);
+        
         public event Action OnDied;
-        
-        public float CurrentHealth => currentHealth;
-        public float MaxHealth => playerStats.maxHealth;
-        public bool IsDead => currentHealth <= 0f;
-        
+
         private void Awake()
         {
             playerStats = GetComponent<PlayerStatsData>();
         }
 
-        private void OnEnable()
+        private void Start()
         {
-            currentHealth = playerStats.maxHealth; 
+            FullHeal();
         }
+
         public void TakeDamage(float amount)
         {
-            if (playerStats.godMode) return;
-            if (IsDead) return;
-            if (GodMode) return;
-
-            currentHealth  -= amount;
-            Debug.Log($"Life: { currentHealth }");
+            if (IsInvincible || IsDead) return;
             
-            if (bloodOverlay != null) bloodOverlay.OnDamaged();
-            if (cameraShake != null) cameraShake.Shake(1.25f);
-
-            if (currentHealth <= 0f)
+            CurrentHealth -= amount;
+            
+            int integerDamageValue = Mathf.RoundToInt(amount);
+            
+            Vector3 spawnPosition = transform.position + new Vector3(0f, 1.5f, 0f);
+            
+            if (SpawnsDamagePopups.Instance != null)
             {
-                currentHealth = 0f;
-                OnDied?.Invoke();
+                SpawnsDamagePopups.Instance.DamageDone(integerDamageValue, spawnPosition, false);
+            }
+            
+            bloodOverlay?.OnDamaged();
+            cameraShake?.Shake(1.25f);
+            
+            if (CurrentHealth <= 0f)
+            {
+                CurrentHealth = 0f;
+                Die();
             }
         }
-        
+
         public void FullHeal()
         {
-            currentHealth = playerStats.maxHealth;
+            if (playerStats == null) return;
+            CurrentHealth = playerStats.maxHealth;
+        }
+
+        private void Die()
+        {
+            Debug.Log("Player has died.");
+            OnDied?.Invoke();
         }
     }
 }
