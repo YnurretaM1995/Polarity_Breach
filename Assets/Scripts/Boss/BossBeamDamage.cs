@@ -1,3 +1,4 @@
+using PolarityBreach.Audio;
 using PolarityBreach.PolaritySystem;
 using PolarityBreach.Player;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace PolarityBreach.Boss
     {
         [SerializeField] private float damage = 10f;
         [SerializeField] private float damageCooldown = 0.5f;
+        [SerializeField] private AudioClip damageSound;
         
         private PolarityComponent _polarity;
         private float _nextDamageTime;
@@ -29,6 +31,7 @@ namespace PolarityBreach.Boss
 
             if (hit)
             {
+                AudioHandler.Play3DSound(damageSound, playerHealth.transform.position);
                 _nextDamageTime = Time.time + damageCooldown;
             }
         }
