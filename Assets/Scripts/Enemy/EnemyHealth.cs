@@ -1,10 +1,10 @@
 using System;
+using PolarityBreach.Feedback;
 using UnityEngine;
 using PolarityBreach.PolaritySystem.Interfaces;
 
 namespace PolarityBreach.Enemy
 {
-
     public class EnemyHealth : MonoBehaviour, IDamageable
     {
         [SerializeField] private float maxHealth = 30f;
@@ -26,6 +26,14 @@ namespace PolarityBreach.Enemy
             if (IsDead) return;
 
             currentHealth -= amount;
+            
+            int integerDamageValue = Mathf.RoundToInt(amount);
+            Vector3 spawnPosition = transform.position + new Vector3(0f, 1.5f, 0f);
+            
+            if (SpawnsDamagePopups.Instance != null)
+            {
+                SpawnsDamagePopups.Instance.DamageDone(integerDamageValue, spawnPosition, false);
+            }
 
             if (currentHealth <= 0f)
             {
