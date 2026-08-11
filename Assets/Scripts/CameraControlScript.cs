@@ -13,8 +13,14 @@ public class CameraControlScript : MonoBehaviour
     public float xRotation = 30f;
     public float yRotation = 30f;
     public float zRotation = 30f;
+    
+    [Header("Aim Look Ahead")]
+    [SerializeField] private float aimOffsetDistance = 2.5f;
+    [SerializeField] private float aimOffsetSmoothTime = 0.15f;
 
     private Vector3 velocity = Vector3.zero;
+    private Vector3 currentAimOffset;
+    private Vector3 aimOffsetVelocity;
     
     [Header("Shake")]
     [SerializeField] private float shakeDecay = 5f;
@@ -25,6 +31,20 @@ public class CameraControlScript : MonoBehaviour
         if (player is null) return;
             
         Vector3 targetPosition = new Vector3(player.transform.position.x + offsetX, player.transform.position.y + offsetY, player.transform.position.z + offsetZ);
+        
+        Vector3 aimDirection = player.transform.forward;
+        aimDirection.y = 0f;
+
+        if (aimDirection.sqrMagnitude > 0.01f)
+        {
+            aimDirection.Normalize();
+        }
+
+        Vector3 targetAimOffset = aimDirection * aimOffsetDistance;
+
+        currentAimOffset = Vector3.SmoothDamp(currentAimOffset, targetAimOffset, ref aimOffsetVelocity, aimOffsetSmoothTime);
+
+        targetPosition += currentAimOffset;
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
         
