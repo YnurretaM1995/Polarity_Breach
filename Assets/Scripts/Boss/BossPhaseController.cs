@@ -9,6 +9,7 @@ namespace PolarityBreach.Boss
         [Header("Attacks")]
         [SerializeField] private BossPhaseOneAttack phaseOneAttack;
         [SerializeField] private BossPhaseTwoAttack phaseTwoAttack;
+        [SerializeField] private float phase3_4BeamRotationSpeed = 10f;
 
         [Header("Shield")]
         [SerializeField] private BossShield bossShield;
@@ -72,6 +73,16 @@ namespace PolarityBreach.Boss
             }
         }
 
+        private void Update()
+        {
+            if (phaseTwoAttack == null) return;
+
+            if (currentPhase == 3 || currentPhase == 4)
+            {
+                phaseTwoAttack.SetCustomRotationSpeed(phase3_4BeamRotationSpeed);
+            }
+        }
+
         private void StartShieldTransition()
         {
             if (health.IsDead) return;
@@ -127,14 +138,14 @@ namespace PolarityBreach.Boss
             if (currentPhase == 3)
             {
                 StartPhaseOneAttack();
-                StartPhaseTwoAttack();
+                StartPhaseTwoAttack(phase3_4BeamRotationSpeed);
                 return;
             }
 
             if (currentPhase == 4)
             {
                 StartPhaseOneAttack();
-                StartPhaseTwoAttack();
+                StartPhaseTwoAttack(phase3_4BeamRotationSpeed);
                 StartPhase4Wave();
             }
         }
@@ -166,6 +177,14 @@ namespace PolarityBreach.Boss
             if (phaseOneAttack != null)
             {
                 phaseOneAttack.StartPhase();
+            }
+        }
+
+        private void StartPhaseTwoAttack(float rotationSpeed)
+        {
+            if (phaseTwoAttack != null)
+            {
+                phaseTwoAttack.StartPhase(rotationSpeed);
             }
         }
 

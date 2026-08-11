@@ -16,6 +16,8 @@ namespace PolarityBreach.Boss
         private bool isActive;
         private Coroutine phaseRoutine;
         private float rotationDirection = 1f;
+        private bool useCustomRotationSpeed;
+        private float customRotationSpeed;
 
         private void Awake()
         {
@@ -27,8 +29,24 @@ namespace PolarityBreach.Boss
         {
             if (isActive || phaseRoutine != null) return;
 
+            useCustomRotationSpeed = false;
             rotationDirection = 1f;
             phaseRoutine = StartCoroutine(PhaseTwoLoop());
+        }
+
+        public void StartPhase(float customRotationSpeed)
+        {
+            if (isActive || phaseRoutine != null) return;
+
+            useCustomRotationSpeed = true;
+            this.customRotationSpeed = customRotationSpeed;
+            rotationDirection = 1f;
+            phaseRoutine = StartCoroutine(PhaseTwoLoop());
+        }
+
+        public void SetCustomRotationSpeed(float newRotationSpeed)
+        {
+            customRotationSpeed = newRotationSpeed;
         }
 
         public void StopPhase()
@@ -72,7 +90,9 @@ namespace PolarityBreach.Boss
         {
             if (!isActive || beamPivot == null) return;
             
-            beamPivot.Rotate(Vector3.up, rotationSpeed * rotationDirection * Time.deltaTime);
+            float currentRotationSpeed = useCustomRotationSpeed ? customRotationSpeed : rotationSpeed;
+
+            beamPivot.Rotate(Vector3.up, currentRotationSpeed * rotationDirection * Time.deltaTime);
         }
         
         private void SetBeamsActive(bool active)
