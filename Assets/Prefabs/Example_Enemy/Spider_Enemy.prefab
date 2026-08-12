@@ -322,18 +322,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPursuitAI
   target: {fileID: 0}
-  detectionRadius: 12
-  loseTargetRadius: 16
+  detectionRadius: 28
+  loseTargetRadius: 30
   requireLineOfSight: 1
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 0
-  moveSpeed: 3.5
+  moveSpeed: 5
   acceleration: 12
   stoppingDistance: 0
   isRangedEnemy: 1
-  preferredDistance: 5
-  preferredDistanceBuffer: 0.75
+  preferredDistance: 13
+  preferredDistanceBuffer: 1.2
   idleUntilDetected: 1
 --- !u!114 &-1134821473822150626
 MonoBehaviour:
@@ -350,9 +350,11 @@ MonoBehaviour:
   firePoint: {fileID: 2564543507342304787}
   projectilePool: {fileID: 0}
   fireRate: 0.6
-  projectileSpeed: 10
-  maxFireRange: 12
+  projectileSpeed: 11
+  maxFireRange: 25
   damage: 10
+  projectilesPerShot: 5
+  spreadAngle: 35
   shootSound: {fileID: 8300000, guid: f55671d441e5e234ea9e67aa84393daf, type: 3}
 --- !u!114 &3123404587782500808
 MonoBehaviour:
