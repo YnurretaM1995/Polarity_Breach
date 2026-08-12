@@ -7,15 +7,17 @@ namespace PolarityBreach.Enemy
     [RequireComponent(typeof(EnemyPursuitAI))]
     public class EnemyShooter : MonoBehaviour
     {
-        [Header("References")]
-        [SerializeField] private Transform firePoint;
+        [Header("References")] [SerializeField]
+        private Transform firePoint;
+
         [SerializeField] private EnemyProjectilePool projectilePool;
 
-        [Header("Firing")]
-        [SerializeField] private float fireRate = 1.5f;
+        [Header("Firing")] [SerializeField] private float fireRate = 1.5f;
         [SerializeField] private float projectileSpeed = 12f;
         [SerializeField] private float maxFireRange = 12f;
         [SerializeField] private int damage = 10;
+        [SerializeField] private int projectilesPerShot = 3;
+        [SerializeField] private float spreadAngle = 15f;
 
         [SerializeField] private AudioClip shootSound;
 
@@ -30,7 +32,7 @@ namespace PolarityBreach.Enemy
             _polarity = GetComponent<PolarityComponent>();
             if (firePoint == null) firePoint = transform;
             ownColliders = GetComponentsInChildren<Collider>();
-            
+
             if (projectilePool == null)
             {
                 GameObject poolObject = GameObject.Find("EnemyProjectilePool");
@@ -68,31 +70,41 @@ namespace PolarityBreach.Enemy
 
         private void Fire()
         {
-            if (projectilePool  == null || pursuitAI.Target == null) return;
+            if (projectilePool == null || pursuitAI.Target == null) return;
 
             Vector3 targetPoint = pursuitAI.Target.position + Vector3.up * 0.5f;
-            Vector3 dir = (targetPoint - firePoint.position).normalized;
+            Vector3 baseDirection = (targetPoint - firePoint.position).normalized;
 
-            Projectile proj = projectilePool.GetProjectile(firePoint.position, Quaternion.LookRotation(dir));
-            if (proj == null) return;
-            
-            var projPolarity = proj.GetComponent<PolarityComponent>();
-            if (projPolarity != null && _polarity != null)
-                projPolarity.SetPolarity(_polarity.CurrentPolarity);
+            float startAngle = -spreadAngle;
+            float angleStep = projectilesPerShot > 1 ? (spreadAngle * 2f) / (projectilesPerShot - 1) : 0f;
 
-
-            Collider projCollider = proj.GetComponent<Collider>();
-            if (projCollider != null)
+            for (int i = 0; i < projectilesPerShot; i++)
             {
-                foreach (Collider ownCollider in ownColliders)
-                {
-                    if (ownCollider != null)
-                        Physics.IgnoreCollision(projCollider, ownCollider);
-                }
-            }
-            AudioHandler.Play3DSound(shootSound, transform.position);
+                float angle = startAngle + angleStep * i;
+                Vector3 dir = Quaternion.Euler(0f, angle, 0f) * baseDirection;
 
-            proj.Launch(dir, projectileSpeed, damage);
+                Projectile proj = projectilePool.GetProjectile(firePoint.position, Quaternion.LookRotation(dir));
+                if (proj == null) return;
+
+                var projPolarity = proj.GetComponent<PolarityComponent>();
+                if (projPolarity != null && _polarity != null)
+                    projPolarity.SetPolarity(_polarity.CurrentPolarity);
+
+
+                Collider projCollider = proj.GetComponent<Collider>();
+                if (projCollider != null)
+                {
+                    foreach (Collider ownCollider in ownColliders)
+                    {
+                        if (ownCollider != null)
+                            Physics.IgnoreCollision(projCollider, ownCollider);
+                    }
+                }
+
+                AudioHandler.Play3DSound(shootSound, transform.position);
+
+                proj.Launch(dir, projectileSpeed, damage);
+            }
         }
     }
 }
