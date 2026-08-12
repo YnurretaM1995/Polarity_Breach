@@ -156,7 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca74887a2ce54f943b433fe0e7cde8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  lifetime: 4
+  lifetime: 8
+  _impactSound: {fileID: 0}
 --- !u!114 &-2874881251686744892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +184,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
   _renderers: []
-  _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
-  _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
+  _blackMaterial: {fileID: 0}
+  _whiteMaterial: {fileID: 0}
+  flashMaterial: {fileID: 0}
+  flashDuration: 0.04
 --- !u!1001 &6285976183343362565
 PrefabInstance:
   m_ObjectHideFlags: 0

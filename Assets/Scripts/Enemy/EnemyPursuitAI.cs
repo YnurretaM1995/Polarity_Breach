@@ -11,21 +11,21 @@ public class EnemyPursuitAI : MonoBehaviour
     [SerializeField] private Transform target;
 
     [Header("Detection")]
-    [SerializeField] private float detectionRadius = 12f;
-    [SerializeField] private float loseTargetRadius = 16f;
+    [SerializeField] private float detectionRadius = 18f;
+    [SerializeField] private float loseTargetRadius = 20f;
     [SerializeField] private bool requireLineOfSight = true;
     [SerializeField] private LayerMask obstacleLayers;
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 3.5f;
-    [SerializeField] private float acceleration = 12f;
+    [SerializeField] private float moveSpeed = 4f;
+    [SerializeField] private float acceleration = 15f;
     [Tooltip("Distance from target the agent stops. Set to 0 for melee enemies that need to physically touch the player to deal contact damage. Ranged enemies typically don't use this (they stop via preferredDistance instead).")]
     [SerializeField] private float stoppingDistance = 0f;
 
     [Header("Enemy Type")]
     [Tooltip("Melee = walks into player. Ranged = stops/backs off at preferredDistance.")]
     [SerializeField] private bool isRangedEnemy = false;
-    [SerializeField] private float preferredDistance = 5f;
+    [SerializeField] private float preferredDistance = 12f;
     [SerializeField] private float preferredDistanceBuffer = 0.75f; 
 
     [Header("Idle Behaviour")]
