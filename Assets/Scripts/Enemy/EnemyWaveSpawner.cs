@@ -46,6 +46,11 @@ namespace PolarityBreach.Enemy
         [SerializeField] private float timeBetweenWaves = 3f;
         [SerializeField] private float enemySpawnHeight = 0.5f;
 
+        [Header("Spawn Warning")]
+        [SerializeField] private GameObject whiteSpawnWarningPrefab;
+        [SerializeField] private GameObject blackSpawnWarningPrefab;
+        [SerializeField] private float spawnWarningDuration = 1f;
+
         [Header("Random Cluster Settings")] [SerializeField]
         private float clusterRadius = 3f;
 
@@ -95,15 +100,50 @@ namespace PolarityBreach.Enemy
                 }
 
                 Vector3[] offsets = GetPatternOffsets(group.pattern, group.enemyCount, group.spacing);
+                Vector3[] spawnPositions = new Vector3[offsets.Length];
 
                 for (int i = 0; i < offsets.Length; i++)
                 {
                     Vector3 spawnPosition = spawnPoint.position + offsets[i];
                     spawnPosition.y = enemySpawnHeight;
+                    spawnPositions[i] = spawnPosition;
+                }
 
-                    SpawnEnemyAtPosition(spawnPosition, group.polarity);
+                yield return StartCoroutine(ShowSpawnWarnings(spawnPositions, group.polarity));
 
+                for (int i = 0; i < spawnPositions.Length; i++)
+                {
+                    SpawnEnemyAtPosition(spawnPositions[i], group.polarity);
                     yield return new WaitForSeconds(timeBetweenSpawns);
+                }
+            }
+        }
+
+        private IEnumerator ShowSpawnWarnings(Vector3[] spawnPositions, Polarity polarity)
+        {
+            GameObject spawnWarningPrefab = polarity == Polarity.White
+                ? whiteSpawnWarningPrefab
+                : blackSpawnWarningPrefab;
+
+            if (spawnWarningPrefab == null || spawnWarningDuration <= 0f)
+            {
+                yield break;
+            }
+
+            GameObject[] warnings = new GameObject[spawnPositions.Length];
+
+            for (int i = 0; i < spawnPositions.Length; i++)
+            {
+                warnings[i] = Instantiate(spawnWarningPrefab, spawnPositions[i], Quaternion.identity);
+            }
+
+            yield return new WaitForSeconds(spawnWarningDuration);
+
+            for (int i = 0; i < warnings.Length; i++)
+            {
+                if (warnings[i] != null)
+                {
+                    Destroy(warnings[i]);
                 }
             }
         }
