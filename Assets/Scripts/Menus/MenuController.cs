@@ -29,6 +29,11 @@ namespace PolarityBreach.Menus
             }
         }
 
+        public void QuitGame()
+        {
+            SceneManager.LoadScene(0);
+        }
+
         public void ExitButton()
         {
             Application.Quit();
