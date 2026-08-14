@@ -203,6 +203,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2351572942621127658}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6236854901365836115}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3615009978512641162}
   m_SourcePrefab: {fileID: 100100000, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}
 --- !u!1 &6102381678693926401 stripped
 GameObject:
@@ -310,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   acceleration: 12
   deceleration: 16
+  dashUI: {fileID: 0}
 --- !u!114 &2124806471967177995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PlayerPolarityController
   _switchActionRef: {fileID: 0}
   colorSound: {fileID: 0}
+  polarityUI: {fileID: 0}
 --- !u!114 &888351089162473407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +456,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.CheatMenu
   playerStats: {fileID: 0}
   waveSpawner: {fileID: 0}
+  player: {fileID: 0}
+  bossRoomPoint: {fileID: 0}
+  bossObject: {fileID: 0}
+  windowWidth: 300
+  windowHeight: 600
+  sliderSteps: 20
+--- !u!114 &6236854901365836115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102381678693926401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50dd0fb6d1cd3c04795eeb32b275796a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerXP
+  currentXP: 0
+  currentLevel: 1
+  xpToNextLevel: 100
+  xpCurveMultiplier: 1.25
+--- !u!114 &-3615009978512641162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6102381678693926401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d852908bd607b634dbfba3324b631702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Player.PlayerLevelUpBonus
+  attackDamageIncrease: 2
+  attackSpeedIncrease: 0.05
+  maxHealthIncrease: 10
+  attackSpeedDelayReduction: 0.02
+  polarityCooldownReduction: 0.1
 --- !u!4 &6916354072913583291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8128b78a7cdab8241bc0502dc0108187, type: 3}

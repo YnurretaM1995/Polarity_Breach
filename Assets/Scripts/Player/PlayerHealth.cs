@@ -68,5 +68,11 @@ namespace PolarityBreach.Player
             Debug.Log("Player has died.");
             OnDied?.Invoke();
         }
+        
+        public void IncreaseMaxHealth(float amount)
+        {
+            if (playerStats == null) return;
+            CurrentHealth += amount;
+        }
     }
 }

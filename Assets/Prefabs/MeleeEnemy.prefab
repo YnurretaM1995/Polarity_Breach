@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 7077975418867902363}
   - component: {fileID: 7598174194545181029}
   - component: {fileID: 9027182365275513604}
+  - component: {fileID: -2566133259966602007}
   m_Layer: 0
   m_Name: MeleeEnemy
   m_TagString: Enemy
@@ -582,6 +583,7 @@ MonoBehaviour:
   playerTag: Player
   knockbackForce: 6
   enemyPushback: 1.5
+  damageSound: {fileID: 0}
 --- !u!114 &7077975418867902363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,8 +597,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.PolaritySystem.PolarityVisual
   _renderers: []
-  _blackColor: {r: 0.12, g: 0.12, b: 0.16, a: 1}
-  _whiteColor: {r: 0.95, g: 0.95, b: 0.98, a: 1}
+  _blackMaterial: {fileID: 0}
+  _whiteMaterial: {fileID: 0}
+  flashMaterial: {fileID: 0}
+  flashDuration: 0.04
 --- !u!114 &7598174194545181029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,3 +631,16 @@ MonoBehaviour:
   attackCooldown: 1.2
   windupTime: 0.2
   swingDuration: 0.15
+--- !u!114 &-2566133259966602007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615581783410793447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e200155e54812c045ab666ae90270805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyXPReward
+  xpReward: 10

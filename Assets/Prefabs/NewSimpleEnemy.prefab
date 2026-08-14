@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: -6071555057613033898}
   - component: {fileID: 933150920283731836}
   - component: {fileID: 7102481491705109382}
+  - component: {fileID: 761236050368666783}
   m_Layer: 0
   m_Name: NewSimpleEnemy
   m_TagString: Enemy
@@ -429,13 +430,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93c014be9b54c514c86ce622a14c2386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  projectilePrefab: {fileID: 5025843939284189824, guid: d0678717a2661ba4aa659be2108e020d, type: 3}
   firePoint: {fileID: 784078283314235144}
   projectilePool: {fileID: 0}
   fireRate: 0.6
   projectileSpeed: 10
   maxFireRange: 12
   damage: 10
+  projectilesPerShot: 3
+  spreadAngle: 15
   shootSound: {fileID: 8300000, guid: f55671d441e5e234ea9e67aa84393daf, type: 3}
 --- !u!114 &8340595292806237781
 MonoBehaviour:
@@ -582,3 +584,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &761236050368666783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8841559682555498600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e200155e54812c045ab666ae90270805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PolarityBreach.Enemy.EnemyXPReward
+  xpReward: 10
