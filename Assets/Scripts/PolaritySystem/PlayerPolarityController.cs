@@ -18,6 +18,7 @@ namespace PolarityBreach.PolaritySystem
         private PlayerStatsData _playerStats;
 
         [SerializeField] private AudioClip colorSound;
+        [SerializeField] private AbilityUIDisplay polarityUI;
         
         public float SwitchCooldown
         {
@@ -82,6 +83,7 @@ namespace PolarityBreach.PolaritySystem
             _polarity.Toggle();
             _lastSwitchTime = Time.time;
             AudioHandler.Play3DSound(colorSound, transform.position);
+            polarityUI.StartCooldownUI();
             return true;
         }
         

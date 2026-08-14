@@ -1,4 +1,5 @@
 using System;
+using PolarityBreach.Player;
 using PolarityBreach.PolaritySystem.Interfaces;
 using UnityEngine;
 
