@@ -20,7 +20,8 @@ namespace PolarityBreach.Player
         
         [Header("Movement Feel")]
         [SerializeField] private float acceleration = 12f;   
-        [SerializeField] private float deceleration = 16f; 
+        [SerializeField] private float deceleration = 16f;
+        [SerializeField] private AbilityUIDisplay dashUI;
 
         private void Awake()
         {
@@ -160,6 +161,7 @@ namespace PolarityBreach.Player
             }
 
             StartCoroutine(DashCoroutine());
+            dashUI.StartCooldownUI();
         }
 
         private IEnumerator DashCoroutine()

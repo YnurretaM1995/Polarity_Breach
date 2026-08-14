@@ -99,11 +99,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spider_Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
-      insertIndex: 0
+      insertIndex: -1
       addedObject: {fileID: 2564543507342304787}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6c2a30e7ab4be9f4b9ae409f8149c187, type: 3}
