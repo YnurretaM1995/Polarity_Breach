@@ -9,6 +9,11 @@ namespace PolarityBreach
         [SerializeField] private EnemyWaveSpawner waveSpawner;
         [SerializeField] private Transform bossRoomSpawnPoint;
 
+        [Header("Colliders")]
+        [SerializeField] private Collider blockingCollider; // solid, blocks player when door is closed
+        [SerializeField] private Collider triggerCollider;   // Is Trigger = true, detects player passing through
+        [SerializeField] private MeshRenderer doorMesh;
+
         private bool isOpen = false;
 
         private void OnEnable()
@@ -25,15 +30,16 @@ namespace PolarityBreach
 
         private void OpenDoor()
         {
-            Debug.Log("Door opened!");
+            if (isOpen) return; // guard against double-firing
 
+            Debug.Log("Door opened!");
             isOpen = true;
 
-            // Hide the door
-            GetComponent<MeshRenderer>().enabled = false;
+            if (doorMesh != null)
+                doorMesh.enabled = false;
 
-            // Allow player to walk through
-            GetComponent<Collider>().enabled = false;
+            if (blockingCollider != null)
+                blockingCollider.enabled = false;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -43,6 +49,12 @@ namespace PolarityBreach
 
             if (other.CompareTag("Player"))
             {
+                if (bossRoomSpawnPoint == null)
+                {
+                    Debug.LogWarning("Door: bossRoomSpawnPoint not assigned.");
+                    return;
+                }
+
                 Debug.Log("Entering boss room!");
                 other.transform.position = bossRoomSpawnPoint.position;
             }
