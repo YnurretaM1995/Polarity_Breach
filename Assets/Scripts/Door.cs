@@ -44,6 +44,8 @@ namespace PolarityBreach
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log($"Trigger entered by: {other.name}, tag: {other.tag}, isOpen: {isOpen}");
+            
             if (!isOpen)
                 return;
 
@@ -55,8 +57,18 @@ namespace PolarityBreach
                     return;
                 }
 
+                Rigidbody rb = other.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = Vector3.zero; 
+                    rb.position = bossRoomSpawnPoint.position;
+                }
+                else
+                {
+                    other.transform.position = bossRoomSpawnPoint.position;
+                }
+
                 Debug.Log("Entering boss room!");
-                other.transform.position = bossRoomSpawnPoint.position;
             }
         }
     }
